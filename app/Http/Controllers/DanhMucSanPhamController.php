@@ -16,10 +16,10 @@ class DanhMucSanPhamController extends Controller
         return view('admin.pages.danh_muc_san_pham.index');
     }
 
-    public function index_vue()
-    {
-        return view('new_admin.pages.danh_muc_san_pham.index');
-    }
+    // public function index_vue()
+    // {
+    //     return view('new_admin.pages.danh_muc_san_pham.index');
+    // }
 
     public function getData()
     {
@@ -38,6 +38,8 @@ class DanhMucSanPhamController extends Controller
 
     public function store(CreateDanhMucSanPhamRequest $request)
     {
+
+        // dd($request->all());
         DanhMucSanPham::create([
             'ten_danh_muc'      =>  $request->ten_danh_muc,
             'slug_danh_muc'     =>  $request->slug_danh_muc,

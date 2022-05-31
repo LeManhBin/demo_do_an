@@ -37,3 +37,4 @@ class AddToCartRequest extends FormRequest
         ];
     }
 }
+

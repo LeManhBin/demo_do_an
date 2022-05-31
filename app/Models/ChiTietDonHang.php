@@ -17,6 +17,7 @@ class ChiTietDonHang extends Model
         'so_luong',
         'don_gia',
         'is_cart',
+        'thanh_tien',
         'don_hang_id',
         'agent_id',
     ];

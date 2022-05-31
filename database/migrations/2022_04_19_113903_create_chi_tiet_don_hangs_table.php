@@ -19,6 +19,7 @@ class CreateChiTietDonHangsTable extends Migration
             $table->string('ten_san_pham');
             $table->integer('so_luong')->default(1);
             $table->double('don_gia', 18, 0);
+            $table->double('thanh_tien', 18, 0);
             $table->integer('is_cart')->default(1);
             $table->integer('don_hang_id')->nullable();
             $table->integer('agent_id');

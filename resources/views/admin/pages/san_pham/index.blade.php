@@ -1,4 +1,4 @@
-@extends('admin.master')
+@extends('new_admin.master')
 @section('title')
 <div class="page-title-icon">
     <i class="pe-7s-car icon-gradient bg-mean-fruit"></i>
@@ -12,15 +12,21 @@
 </div>
 
 @endsection
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+@section('content')
+
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header bg-danger">
-            <input type="text" name="" id="idCanXoa" class="form-control" hidden>
-            <h5 class="modal-title text-white" id="exampleModalLabel">Xoá Sản Phẩm</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+        <div class="modal-header">
+          <h5 class="modal-title">Xóa Sản Phẩm</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            Bạn có chắc chắn muốn xóa? Điều này không thể hoàn tác.
+            <input type="text" class="form-control" placeholder="Nhập vào id cần xóa" id="idCanXoa" hidden>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -28,8 +34,107 @@
         </div>
       </div>
     </div>
-  </div>
-@section('content')
+</div>
+<div class="modal fade text-left" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel33" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-success">
+                <label class="modal-title text-text-bold-600 text-white" id="myModalLabel33"><h3>Chỉnh Sửa Sản Phẩm</h3></label>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="#">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <fieldset class="form-group">
+                                        <label>Tên Sản Phẩm</label>
+                                        <input type="text" class="form-control" id="ten_san_pham_edit" placeholder="Nhập vào tên sản phẩm">
+                                        <input type="number" class="form-control" id="id_edit" hidden>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <fieldset class="form-group">
+                                        <label>Slug Sản Phẩm</label>
+                                        <input type="text" class="form-control" id="slug_san_pham_edit" placeholder="Nhập vào slug sản phẩm">
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <fieldset class="form-group">
+                                        <label>Giá Bán</label>
+                                        <input type="number" class="form-control" id="gia_ban_edit" placeholder="Nhập vào giá bán">
+                                    </fieldset>
+                                </div>
+                                <div class="col-md-6">
+                                    <fieldset class="form-group">
+                                        <label>Giá Khuyến Mãi</label>
+                                        <input type="number" class="form-control" id="gia_khuyen_mai_edit" placeholder="Nhập vào giá khuyến mãi">
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <fieldset class="form-group">
+                                        <label>Ảnh Đại Diện</label>
+                                        <div class="input-group">
+                                            <input id="anh_dai_dien_edit" name="anh_dai_dien" class="form-control" type="text">
+                                            <input type="button" class="btn-info lfm" data-input="anh_dai_dien_edit" data-preview="holder_edit" value="Upload">
+                                        </div>
+                                        <img id="holder_edit" style="margin-top:15px;max-height:100px;">
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <fieldset class="form-group">
+                                        <label for="placeTextarea">Mô Tả Ngắn</label>
+                                        <textarea class="form-control" id="mo_ta_ngan_edit" cols="30" rows="5" placeholder="Nhập vào mô tả ngắn"></textarea>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="position-relative form-group">
+                                <label>Mô Tả Chi Tiết</label>
+                                <input name="mo_ta_chi_tiet_edit" id="mo_ta_chi_tiet_edit" placeholder="Nhập vào mô tả chi tiết" type="text" class="form-control">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <fieldset class="form-group">
+                                        <label>Danh Mục</label>
+                                        <select id="id_danh_muc_edit" class="custom-select block">
+                                            {{-- @foreach ($danhSachDanhMuc as $value)
+                                                <option value={{$value->id}}> {{ $value->ten_danh_muc }} </option>
+                                            @endforeach --}}
+                                        </select>
+                                    </fieldset>
+                                </div>
+                                <div class="col-md-6">
+                                    <fieldset class="form-group">
+                                        <label>Trạng thái</label>
+                                        <select id="is_open_edit" class="custom-select block">
+                                            <option value=1>Hiển Thị</option>
+                                            <option value=0>Tạm tắt</option>
+                                        </select>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="reset" id="closeModal" class="btn btn-outline-secondary" data-dismiss="modal" value="close">
+                    <input type="submit" id="updateSanPham" class="btn btn-outline-primary" data-dismiss="modal" value="Chỉnh sửa">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
     <div class="col-md-12">
         <div class="main-card mb-3 card">
             <div class="card-body"><h5 class="card-title">Thêm mới sản phẩm</h5>
@@ -68,9 +173,11 @@
                                 <div class="input-group">
                                     <input id="anh_dai_dien" name="anh_dai_dien" class="form-control" type="text">
                                     <input type="button" class="btn-info lfm" data-input="anh_dai_dien" data-preview="holder" value="Upload">
+
                                 </div>
                                 <img id="holder" style="margin-top:15px;max-height:100px;">
                             </div>
+
                         </div>
                     </div>
 
@@ -207,8 +314,8 @@
                         html += '<td>' + doan_muon_hien_thi + '</td>';
                         html += '<td>' + value.ten_danh_muc + '</td>';
                         html += '<td>';
-                        html += '<button class="btn btn-danger nutDelete mr-1" data-quoclongdeptrai="' + value.id + '" data-toggle="modal" data-target="#exampleModal"> Xóa </button>';
-                        html += '<button class="btn btn-success nutEdit" data-quoclongdeptrai="' + value.id + '" data-toggle="modal" data-target="#exampleModal"> Chỉnh sửa </button>';
+                        html += '<button class="btn btn-danger nutDelete mr-1" data-id="' + value.id + '" data-toggle="modal" data-target="#deleteModal"> Xóa </button>';
+                        html += '<button class="btn btn-success nutEdit" data-id="' + value.id + '" data-toggle="modal" data-target="#editModal"> Chỉnh sửa </button>';
                         html += '</td>';
                         html += '</tr>';
                     });
@@ -285,11 +392,13 @@
                 },
             });
         });
-
         $('body').on('click', '.nutDelete', function(){
-            var id_cua_em = $(this).data('quoclongdeptrai');
+            console.log(123);
+            var id_cua_em = $(this).data('id');
+            console.log(id_cua_em);
             $("#idCanXoa").val(id_cua_em);
         });
+
 
         function satThu(id) {
             $.ajax({

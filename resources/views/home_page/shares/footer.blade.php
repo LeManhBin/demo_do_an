@@ -4,7 +4,7 @@
     <div class="footer-top">
         <div class="container">
             <!-- Signup Newsletter Start -->
-            <div class="row mb-60">
+            {{-- <div class="row mb-60">
                  <div class="col-xl-7 col-lg-7 ml-auto mr-auto col-md-8">
                     <div class="news-desc text-center mb-30">
                          <h3>Sign Up For Newsletters</h3>
@@ -17,9 +17,9 @@
                          </form>
                      </div>
                  </div>
-            </div>
+            </div> --}}
             <!-- Signup-Newsletter End -->
-            <div class="row">
+            {{-- <div class="row">
                 <!-- Single Footer Start -->
                 <div class="col-lg-2 col-md-4 col-sm-6">
                     <div class="single-footer mb-sm-40">
@@ -35,10 +35,10 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- Single Footer Start -->
                 <!-- Single Footer Start -->
-                <div class="col-lg-2 col-md-4 col-sm-6">
+                {{-- <div class="col-lg-2 col-md-4 col-sm-6">
                     <div class="single-footer mb-sm-40">
                         <h3 class="footer-title">Customer Service</h3>
                         <div class="footer-content">
@@ -52,10 +52,10 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- Single Footer Start -->
                 <!-- Single Footer Start -->
-                <div class="col-lg-2 col-md-4 col-sm-6">
+                {{-- <div class="col-lg-2 col-md-4 col-sm-6">
                     <div class="single-footer mb-sm-40">
                         <h3 class="footer-title">Extras</h3>
                         <div class="footer-content">
@@ -69,10 +69,10 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- Single Footer Start -->
                 <!-- Single Footer Start -->
-                <div class="col-lg-2 col-md-4 col-sm-6">
+                {{-- <div class="col-lg-2 col-md-4 col-sm-6">
                     <div class="single-footer mb-sm-40">
                         <h3 class="footer-title">My Account</h3>
                         <div class="footer-content">
@@ -86,22 +86,22 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- Single Footer Start -->
                 <!-- Single Footer Start -->
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="single-footer mb-sm-40">
-                        <h3 class="footer-title">My Account</h3>
+                        <h3 class="footer-title">Liên Hệ</h3>
                         <div class="footer-content">
                             <ul class="footer-list address-content">
-                                <li><i class="lnr lnr-map-marker"></i> Address: 169-C, Technohub, Dubai Silicon Oasis.</li>
-                                <li><i class="lnr lnr-envelope"></i><a href="#"> mail Us: Support@truemart.com </a></li>
+                                <li><i class="lnr lnr-map-marker"></i> Địa chỉ: 03 3 Quang Trung, Thạch Thang, Hải Châu, Đà Nẵng</li>
+                                <li><i class="lnr lnr-envelope"></i><a href="#"> Email: llemanhbin@gmail.com </a></li>
                                 <li>
-                                    <i class="lnr lnr-phone-handset"></i> Phone: (+800) 123 456 789)
+                                    <i class="lnr lnr-phone-handset"></i> Phone: (+84) 365160470
                                 </li>
                             </ul>
                             <div class="payment mt-25 bdr-top pt-30">
-                                <a href="#"><img class="img" src="/assets_homepage/img/payment/1.png" alt="payment-image"></a>
+                                {{-- <a href="#"><img class="img" src="/assets_homepage/img/payment/1.png" alt="payment-image"></a> --}}
                             </div>
                         </div>
                     </div>
@@ -114,7 +114,7 @@
     </div>
     <!-- Footer Top End -->
     <!-- Footer Middle Start -->
-    <div class="footer-middle text-center">
+    {{-- <div class="footer-middle text-center">
         <div class="container">
             <div class="footer-middle-content pt-20 pb-30">
                     <ul class="social-footer">
@@ -128,14 +128,14 @@
             </div>
         </div>
         <!-- Container End -->
-    </div>
+    </div> --}}
     <!-- Footer Middle End -->
     <!-- Footer Bottom Start -->
     <div class="footer-bottom pb-30">
         <div class="container">
 
              <div class="copyright-text text-center">
-                <p>Copyright © 2018 <a target="_blank" href="#">Truemart</a> All Rights Reserved.</p>
+                {{-- <p>Copyright © 2018 <a target="_blank" href="#">Truemart</a> All Rights Reserved.</p> --}}
              </div>
         </div>
         <!-- Container End -->

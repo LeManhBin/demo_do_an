@@ -14,7 +14,7 @@
     </div>
     <!-- Container End -->
 </div>
-
+{{-- @foreach ($sanPham as $key => $value) --}}
 <div class="main-product-thumbnail ptb-100 ptb-sm-60">
     <div class="container">
         <div class="thumb-bg">
@@ -73,17 +73,25 @@
                             <div class="pro-actions">
                                 @if (Auth::guard('agent')->check())
                                     <div class="actions-primary">
-                                        <a href="#" title="Add to Cart" > + Add To Cart</a>
+                                        <a class="addToCart" data-id="{{ $sanPham->id }}" > Thêm vào giỏ hàng</a>
+                                        {{-- <a class="addToCart" data-id="{{ $value->id }}" > Thêm vào giỏ hàng</a> --}}
                                     </div>
                                 @else
                                     <div class="actions-primary">
-                                        <a href="cart.html" title="Add to Cart" data-toggle="modal" data-target="#myModal" > + Add To Cart</a>
+                                        <a href="cart.html"  data-toggle="modal" data-target="#myModal" > Thêm vào giỏ hàng</a>
                                     </div>
                                 @endif
+                                @if (Auth::guard('agent')->check())
+
                                 <div class="actions-secondary">
-                                    <a href="compare.html" title="" data-original-title="Compare"><i class="lnr lnr-sync"></i> <span>Add To Compare</span></a>
-                                    <a href="wishlist.html" title="" data-original-title="WishList"><i class="lnr lnr-heart"></i> <span>Add to WishList</span></a>
+                                    <a class="add" data-id="{{ $sanPham->id }}"><i class="lnr lnr-heart"></i> <span>Thêm vào danh sách yêu thích</span></a>
                                 </div>
+                                @else
+                                <div class="actions-secondary">
+                                    <a href="wishlist.html" title="" data-original-title=""><i class="lnr lnr-heart"></i> <span>Thêm vào danh sách yêu thích</span></a>
+                                </div>
+                                @endif
+
                             </div>
                         </div>
                     </div>
@@ -95,7 +103,7 @@
     </div>
     <!-- Container End -->
 </div>
-
+{{-- @endforeach --}}
 <div class="thumnail-desc pb-100 pb-sm-60">
     <div class="container">
         <div class="row">
@@ -138,7 +146,7 @@
                                     <i class="fa fa-star-o"></i>
                                     <i class="fa fa-star-o"></i>
                                     <i class="fa fa-star-o"></i>
-                                    <label>Review by <a href="https://themeforest.net/user/hastech">Truemart</a></label>
+                                    <label>Review by <a href="https://themeforest.net/user/hastech"></a></label>
                                 </li>
                                 <!-- Single Review List End -->
                                 <!-- Single Review List Start -->
@@ -252,17 +260,23 @@
                         <div class="pro-actions">
                             @if (Auth::guard('agent')->check())
                                 <div class="actions-primary">
-                                    <a href="#" title="Add to Cart" > + Add To Cart</a>
+                                    <a class="addToCart" data-id="{{ $value->id }}" > Thêm vào giỏ hàng</a>
                                 </div>
                             @else
                                 <div class="actions-primary">
-                                    <a href="cart.html" title="Add to Cart" data-toggle="modal" data-target="#myModal" > + Add To Cart</a>
+                                    <a href="cart.html"  data-toggle="modal" data-target="#myModal" > Thêm vào giỏ hàng</a>
                                 </div>
                             @endif
+                            @if (Auth::guard('agent')->check())
+
                             <div class="actions-secondary">
-                                <a href="compare.html" title="Compare"><i class="lnr lnr-sync"></i> <span>Add To Compare</span></a>
-                                <a href="wishlist.html" title="WishList"><i class="lnr lnr-heart"></i> <span>Add to WishList</span></a>
+                                <a class="addToLike" data-id="{{ $value->id }}"><i class="lnr lnr-heart"></i> <span>Thêm vào danh sách yêu thích</span></a>
                             </div>
+                            @else
+                            <div class="actions-secondary">
+                                <a href="wishlist.html" title="" data-original-title=""><i class="lnr lnr-heart"></i> <span>Thêm vào danh sách yêu thích</span></a>
+                            </div>
+                            @endif
                         </div>
                     </div>
                     <!-- Product Content End -->

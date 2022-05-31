@@ -22,13 +22,21 @@ Route::get('/cart/data', [\App\Http\Controllers\ChiTietDonHangController::class,
 Route::post('/add-to-cart-update', [\App\Http\Controllers\ChiTietDonHangController::class, 'addToCartUpdate']);
 Route::post('/remove-cart', [\App\Http\Controllers\ChiTietDonHangController::class, 'removeCart']);
 
+
+Route::get('/create-bill', [\App\Http\Controllers\DonHangController::class, 'store']);
 Route::post('/add-to-cart', [\App\Http\Controllers\ChiTietDonHangController::class, 'addToCart']);
 
+//yeu thich
+Route::get('/yeuthich', [\App\Http\Controllers\YeuThichController::class, 'index']);
+Route::get('/yeuthich/data', [\App\Http\Controllers\YeuThichController::class, 'dataYeuThich']);
+Route::post('/add-yeu-thich-update', [\App\Http\Controllers\YeuThichController::class, 'addToLikeUpdate']);
+Route::post('/remove-yeuthich', [\App\Http\Controllers\YeuThichController::class, 'removeYeuThich']);
+Route::post('/add-to-like', [\App\Http\Controllers\YeuThichController::class, 'addToLike']);
 Route::get('/test', [\App\Http\Controllers\TestController::class, 'test']);
 
 Route::group(['prefix' => '/admin'], function() {
     Route::group(['prefix' => '/danh-muc-san-pham'], function() {
-        Route::get('/index', [\App\Http\Controllers\DanhMucSanPhamController::class, 'index_vue']);
+        Route::get('/index', [\App\Http\Controllers\DanhMucSanPhamController::class, 'index']);
         Route::post('/index', [\App\Http\Controllers\DanhMucSanPhamController::class, 'store']);
         Route::get('/data', [\App\Http\Controllers\DanhMucSanPhamController::class, 'getData']);
 
@@ -44,33 +52,35 @@ Route::group(['prefix' => '/admin'], function() {
         // Route::get('/index-vue', [\App\Http\Controllers\DanhMucSanPhamController::class, 'index_vue']);
     });
 
-    // Route::group(['prefix' => '/san-pham'], function() {
-    //     Route::get('/index', [\App\Http\Controllers\SanPhamController::class, 'index']);
-    //     Route::post('/tao-san-pham', [\App\Http\Controllers\SanPhamController::class, 'HamTaoSanPhamDayNe']);
-
-    //     Route::get('/danh-sach-san-pham', [\App\Http\Controllers\SanPhamController::class, 'TraChoMotDoanJsonDanhSachSanPham']);
-    //     Route::get('/doi-trang-thai/{id}', [\App\Http\Controllers\SanPhamController::class, 'DoiTrangThaiSanPham']);
-
-    //     Route::get('/xoa-san-pham/{id}', [\App\Http\Controllers\SanPhamController::class, 'XoaSanPham']);
-
-    //     Route::get('/edit/{id}', [\App\Http\Controllers\SanPhamController::class, 'editSanPham']);
-    //     Route::post('/update', [\App\Http\Controllers\SanPhamController::class, 'updateSanPham']);
-    // });
-
     Route::group(['prefix' => '/san-pham'], function() {
-        Route::get('/index', [\App\Http\Controllers\SanPhamVueController::class, 'index']);
+        Route::get('/index', [\App\Http\Controllers\SanPhamController::class, 'index']);
+        Route::post('/tao-san-pham', [\App\Http\Controllers\SanPhamController::class, 'HamTaoSanPhamDayNe']);
 
-        Route::get('/changeStatus/{id}', [\App\Http\Controllers\SanPhamVueController::class, 'changeStatus']);
+        Route::get('/danh-sach-san-pham', [\App\Http\Controllers\SanPhamController::class, 'TraChoMotDoanJsonDanhSachSanPham']);
+        Route::get('/doi-trang-thai/{id}', [\App\Http\Controllers\SanPhamController::class, 'DoiTrangThaiSanPham']);
 
-        Route::get('/loadData', [\App\Http\Controllers\SanPhamVueController::class, 'loadData']);
-        Route::post('/create', [\App\Http\Controllers\SanPhamVueController::class, 'store']);
-        Route::post('/update', [\App\Http\Controllers\SanPhamVueController::class, 'update']);
-        Route::get('/edit/{id}', [\App\Http\Controllers\SanPhamVueController::class, 'edit']);
-        Route::get('/delete/{id}', [\App\Http\Controllers\SanPhamVueController::class, 'delete']);
+        Route::get('/xoa-san-pham/{id}', [\App\Http\Controllers\SanPhamController::class, 'XoaSanPham']);
 
-        Route::post('/search', [\App\Http\Controllers\SanPhamVueController::class, 'search']);
+        Route::get('/edit/{id}', [\App\Http\Controllers\SanPhamController::class, 'editSanPham']);
+        Route::post('/update', [\App\Http\Controllers\SanPhamController::class, 'updateSanPham']);
+
+        Route::post('/search', [\App\Http\Controllers\SanPhamController::class, 'search']);
     });
+//---------------------------
+    // Route::group(['prefix' => '/san-pham'], function() {
+    //     Route::get('/index', [\App\Http\Controllers\SanPhamVueController::class, 'index']);
 
+    //     Route::get('/changeStatus/{id}', [\App\Http\Controllers\SanPhamVueController::class, 'changeStatus']);
+
+    //     Route::get('/loadData', [\App\Http\Controllers\SanPhamVueController::class, 'loadData']);
+    //     Route::post('/create', [\App\Http\Controllers\SanPhamVueController::class, 'store']);
+    //     Route::post('/update', [\App\Http\Controllers\SanPhamVueController::class, 'update']);
+    //     Route::get('/edit/{id}', [\App\Http\Controllers\SanPhamVueController::class, 'edit']);
+    //     Route::get('/delete/{id}', [\App\Http\Controllers\SanPhamVueController::class, 'delete']);
+
+        // Route::post('/search', [\App\Http\Controllers\SanPhamVueController::class, 'search']);
+    // });
+//------------------------------
     Route::group(['prefix' => '/nhap-kho'], function() {
         Route::get('/index', [\App\Http\Controllers\KhoHangController::class, 'index']);
 
@@ -99,3 +109,11 @@ Route::get('/agent/login-addtocart', [\App\Http\Controllers\AgentController::cla
 Route::get('/agent/logout', [\App\Http\Controllers\AgentController::class, 'logout']);
 Route::post('/agent/login', [\App\Http\Controllers\AgentController::class, 'loginAction']);
 Route::get('/active/{hash}', [\App\Http\Controllers\AgentController::class, 'active']);
+//admin
+Route::group(['prefix' => '/admin'], function() {
+    Route::get('/dieukhien', [\App\Http\Controllers\AdminAccController::class, 'viewDieuKhien']);
+});
+Route::get('/admin/login', [\App\Http\Controllers\AdminAccController::class, 'login']);
+Route::get('/admin/logout', [\App\Http\Controllers\AdminAccController::class, 'logout']);
+Route::post('/admin/login', [\App\Http\Controllers\AdminAccController::class, 'loginAction']);
+

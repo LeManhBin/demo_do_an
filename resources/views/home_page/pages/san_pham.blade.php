@@ -27,7 +27,7 @@
                     </div>
                     <!-- Toolbar Short Area Start -->
                     <div class="main-toolbar-sorter clearfix">
-                        <div class="toolbar-sorter d-flex align-items-center">
+                        {{-- <div class="toolbar-sorter d-flex align-items-center">
                             <label>Sort By:</label>
                             <select class="sorter wide" style="display: none;">
                                 <option value="Position">Relevance</option>
@@ -36,7 +36,7 @@
                                 <option value="Price">Price low to heigh</option>
                                 <option value="Price" selected="">Price heigh to low</option>
                             </select><div class="nice-select sorter wide" tabindex="0"><span class="current">Price heigh to low</span><ul class="list"><li data-value="Position" class="option">Relevance</li><li data-value="Product Name" class="option">Neme, A to Z</li><li data-value="Product Name" class="option">Neme, Z to A</li><li data-value="Price" class="option">Price low to heigh</li><li data-value="Price" class="option selected">Price heigh to low</li></ul></div>
-                        </div>
+                        </div> --}}
                     </div>
                     <!-- Toolbar Short Area End -->
                     <!-- Toolbar Short Area Start -->
@@ -85,17 +85,23 @@
                                             <div class="pro-actions">
                                                 @if (Auth::guard('agent')->check())
                                                     <div class="actions-primary">
-                                                        <a href="#" title="Add to Cart" > + Add To Cart</a>
+                                                        <a class="addToCart" data-id="{{ $value->id }}"  > Thêm vào giỏ hàng</a>
                                                     </div>
                                                 @else
                                                     <div class="actions-primary">
-                                                        <a href="cart.html" title="Add to Cart" data-toggle="modal" data-target="#myModal" > + Add To Cart</a>
+                                                        <a href="cart.html"  data-toggle="modal" data-target="#myModal" > Thêm vào giỏ hàng</a>
                                                     </div>
                                                 @endif
+                                                @if (Auth::guard('agent')->check())
+
                                                 <div class="actions-secondary">
-                                                    <a href="compare.html" title="" data-original-title="Compare"><i class="lnr lnr-sync"></i> <span>Add To Compare</span></a>
-                                                    <a href="wishlist.html" title="" data-original-title="WishList"><i class="lnr lnr-heart"></i> <span>Add to WishList</span></a>
+                                                    <a class="addToLike" data-id="{{ $value->id }}"><i class="lnr lnr-heart"></i> <span>Thêm vào danh sách yêu thích</span></a>
                                                 </div>
+                                                @else
+                                                <div class="actions-secondary">
+                                                    <a href="wishlist.html" title="" data-original-title=""><i class="lnr lnr-heart"></i> <span>Thêm vào danh sách yêu thích</span></a>
+                                                </div>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>

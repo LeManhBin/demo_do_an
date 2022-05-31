@@ -1,4 +1,4 @@
-@extends('admin.master')
+@extends('new_admin.master')
 @section('title')
 <div class="page-title-icon">
     <i class="pe-7s-car icon-gradient bg-mean-fruit"></i>
@@ -18,7 +18,7 @@
                 <form autocomplete="off" id="createDanhMuc">
                     <div class="position-relative form-group">
                         <label>Tên Danh Mục</label>
-                        <input  name="ten_danh_muc" placeholder="Nhập vào tên danh mục" type="text" class="form-control">
+                        <input id="ten_danh_muc"  name="ten_danh_muc" placeholder="Nhập vào tên danh mục" type="text" class="form-control">
                     </div>
                     <div class="position-relative form-group">
                         <label>Slug Danh Mục</label>
@@ -199,7 +199,7 @@
                         content_table += '<td class="text-center">';
                         content_table += '<button class="btn btn-danger delete mr-1" data-iddelete="'+ value.id +'" data-toggle="modal" data-target="#deleteModal">Delete</button>';
                         content_table += '<button class="btn btn-primary edit mr-1" data-idedit=' + value.id + ' data-toggle="modal" data-target="#editModal">Edit</button>';
-                        content_table += '<a class="btn btn-warning" href="/admin/danh-muc-san-pham/edit-form/' + value.id + '">Edit Form</a>';
+                        // content_table += '<a class="btn btn-warning" href="/admin/danh-muc-san-pham/edit-form/' + value.id + '">Edit Form</a>';
                         content_table += '</td>';
                         content_table += '</tr>';
                     });
@@ -341,6 +341,7 @@
 
         $("#themMoiDanhMuc").click(function(e){
             e.preventDefault();
+            console.log($("#hinh_anh").val());
             var val_ten_danh_muc    = $("#ten_danh_muc").val();
             var val_slug_danh_muc   = $("#slug_danh_muc").val();
             var val_hinh_anh        = $("#hinh_anh").val();
@@ -354,7 +355,7 @@
                 'id_danh_muc_cha'   :   val_id_danh_muc_cha,
                 'is_open'           :   val_is_open,
             };
-
+            console.log(payload);
             $.ajax({
                 url     :   '/admin/danh-muc-san-pham/index',
                 type    :   'post',

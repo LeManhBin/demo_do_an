@@ -105,7 +105,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <fieldset class="form-group">
-                                        <label>Danh Mục</label>
+                                        <label>Trạng Thái</label>
                                         <select v-model="sanPhamUpdate.is_open" class="custom-select block">
                                             <option value=1>Hiển Thị</option>
                                             <option value=0>Tạm tắt</option>
@@ -204,7 +204,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <fieldset class="form-group">
-                                            <label>Danh Mục</label>
+                                            <label>Trạng Thái</label>
                                             <select v-model="sanPhamCreate.is_open" id="is_open" class="custom-select block">
                                                 <option value=1>Hiển Thị</option>
                                                 <option value=0>Tạm tắt</option>

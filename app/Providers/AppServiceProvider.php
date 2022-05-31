@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Models\DanhMucSanPham;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Schema::defaultStringLength(191);
+
         $menuCha = DanhMucSanPham::where('id_danh_muc_cha', 0)
                                  ->where('is_open', 1)
                                  ->get();

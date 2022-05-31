@@ -93,7 +93,7 @@
                                     <fieldset class="form-group">
                                         <label>Danh Mục</label>
                                         <select id="id_danh_muc_edit" class="custom-select block">
-                                            @foreach ($list_danh_muc as $value)
+                                            @foreach ($danhSachDanhMuc as $value)
                                                 <option value={{$value->id}}> {{ $value->ten_danh_muc }} </option>
                                             @endforeach
                                         </select>
@@ -101,7 +101,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <fieldset class="form-group">
-                                        <label>Danh Mục</label>
+                                        <label>Trạng thái</label>
                                         <select id="is_open_edit" class="custom-select block">
                                             <option value=1>Hiển Thị</option>
                                             <option value=0>Tạm tắt</option>
@@ -188,7 +188,7 @@
                                             <fieldset class="form-group">
                                                 <label>Danh Mục</label>
                                                 <select id="id_danh_muc" class="custom-select block">
-                                                    @foreach ($list_danh_muc as $value)
+                                                    @foreach ($danhSachDanhMuc as $value)
                                                         <option value={{$value->id}}> {{ $value->ten_danh_muc }} </option>
                                                     @endforeach
                                                 </select>
@@ -196,7 +196,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <fieldset class="form-group">
-                                                <label>Danh Mục</label>
+                                                <label>Trạng thái</label>
                                                 <select id="is_open" class="custom-select block">
                                                     <option value=1>Hiển Thị</option>
                                                     <option value=0>Tạm tắt</option>
@@ -333,7 +333,7 @@
                         html += '<td class="text-center align-middle">' + doan_muon_hien_thi + '</td>';
                         html += '<td class="align-middle">' + value.ten_danh_muc + '</td>';
                         html += '<td class="text-nowrap text-center align-middle">';
-                        html += '<button class="btn btn-danger nutDelete mr-1" data-quoclongdeptrai="' + value.id + '" data-toggle="modal" data-target="#exampleModal"> Xóa </button>';
+                        html += '<button class="btn btn-danger nutDelete mr-1" data-dataSanPham="' + value.id + '" data-toggle="modal" data-target="#exampleModal"> Xóa </button>';
                         html += '<button class="btn btn-success nutEdit" data-idedit="' + value.id + '" data-toggle="modal" data-target="#inlineForm"> Chỉnh sửa </button>';
                         html += '</td>';
                         html += '</tr>';
@@ -415,7 +415,7 @@
         });
 
         $('body').on('click', '.nutDelete', function(){
-            var id_cua_em = $(this).data('quoclongdeptrai');
+            var id_cua_em = $(this).data('dataSanPham');
             $("#idCanXoa").val(id_cua_em);
         });
 

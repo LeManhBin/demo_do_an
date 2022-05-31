@@ -15,7 +15,7 @@ class SanPhamController extends Controller
         $list_danh_muc = DanhMucSanPham::where('is_open', 1)
                                         ->where('id_danh_muc_cha', '<>', 0)
                                         ->get();
-        return view('new_admin.pages.san_pham.index', compact('list_danh_muc'));
+        return view('admin.pages.san_pham.index', compact('list_danh_muc'));
     }
 
     public function HamTaoSanPhamDayNe(KiemTraDuLieuTaoSanPham $bienNhanDuLieu)
@@ -88,5 +88,11 @@ class SanPhamController extends Controller
     public function viewProduct()
     {
         return view('home_page.pages.detail_san_pham');
+    }
+    public function search(Request $request)
+    {
+        $data = SanPham::where('ten_san_pham', 'like', '%' . $request->tenSanPham .'%')->get();
+
+        return response()->json(['dataProduct' => $data]);
     }
 }

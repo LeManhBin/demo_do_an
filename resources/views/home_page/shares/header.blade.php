@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Home || Truemart Responsive Html5 Ecommerce Template</title>
+<title>Shop Giày Nhóm 9</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- Favicons -->
 <link rel="shortcut icon" href="/assets_homepage/img/favicon.ico">

@@ -40,7 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admin',
+        ],
         'agent' => [
             'driver' => 'session',
             'provider' => 'agent',
@@ -69,7 +72,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-
+        'admin' => [
+            'driver' => 'eloquent',
+            'model' => \App\Models\AdminAcc::class,
+        ],
         'agent' => [
             'driver' => 'eloquent',
             'model'  => App\Models\Agent::class,
@@ -103,6 +109,7 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+
     ],
 
     /*

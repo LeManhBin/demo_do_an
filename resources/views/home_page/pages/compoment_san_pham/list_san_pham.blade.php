@@ -23,17 +23,23 @@
                     <div class="pro-actions">
                         @if (Auth::guard('agent')->check())
                             <div class="actions-primary">
-                                <a href="#" title="Add to Cart" > + Add To Cart</a>
+                                <a class="addToCart" data-id="{{ $value->id }}"> Thêm vào giỏ hàng</a>
                             </div>
                         @else
                             <div class="actions-primary">
-                                <a href="cart.html" title="Add to Cart" data-toggle="modal" data-target="#myModal" > + Add To Cart</a>
+                                <a href="cart.html"  data-toggle="modal" data-target="#myModal" > Thêm vào giỏ hàng</a>
                             </div>
                         @endif
-                        <div class="actions-secondary">
-                            <a href="compare.html" title="" data-original-title="Compare"><i class="lnr lnr-sync"></i> <span>Add To Compare</span></a>
-                            <a href="wishlist.html" title="" data-original-title="WishList"><i class="lnr lnr-heart"></i> <span>Add to WishList</span></a>
-                        </div>
+                        @if (Auth::guard('agent')->check())
+
+                                <div class="actions-secondary">
+                                    <a class="addToLike" data-id="{{ $value->id }}"><i class="lnr lnr-heart"></i> <span>Thêm vào danh sách yêu thích</span></a>
+                                </div>
+                                @else
+                                <div class="actions-secondary">
+                                    <a href="wishlist.html" title="" data-original-title=""><i class="lnr lnr-heart"></i> <span>Thêm vào danh sách yêu thích</span></a>
+                                </div>
+                                @endif
                     </div>
                 </div>
                 <!-- Product Content End -->

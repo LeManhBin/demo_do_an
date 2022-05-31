@@ -24,8 +24,8 @@
                     <i class="lnr lnr-gift"></i>
                 </div>
                 <div class="support-desc">
-                    <h6>Great Value</h6>
-                    <span>Nunc id ante quis tellus faucibus dictum in eget.</span>
+                    <h6>Ưu đãi lớn</h6>
+                    {{-- <span>Nunc id ante quis tellus faucibus dictum in eget.</span> --}}
                 </div>
             </div>
             <div class="single-support">
@@ -33,8 +33,8 @@
                     <i class="lnr lnr-rocket" ></i>
                 </div>
                 <div class="support-desc">
-                    <h6>Worlwide Delivery</h6>
-                    <span>Quisque posuere enim augue, in rhoncus diam dictum non</span>
+                    <h6>Giao hàng toàn quốc</h6>
+                    {{-- <span>Quisque posuere enim augue, in rhoncus diam dictum non</span> --}}
                 </div>
             </div>
             <div class="single-support">
@@ -42,8 +42,8 @@
                    <i class="lnr lnr-lock"></i>
                 </div>
                 <div class="support-desc">
-                    <h6>Safe Payment</h6>
-                    <span>Duis suscipit elit sem, sed mattis tellus accumsan.</span>
+                    <h6>Thanh toán an toàn</h6>
+                    {{-- <span>Duis suscipit elit sem, sed mattis tellus accumsan.</span> --}}
                 </div>
             </div>
             <div class="single-support">
@@ -51,8 +51,8 @@
                    <i class="lnr lnr-enter-down"></i>
                 </div>
                 <div class="support-desc">
-                    <h6>Shop Confidence</h6>
-                    <span>Faucibus dictum suscipit eget metus. Duis  elit sem, sed.</span>
+                    <h6>Mua sắm thoải mái</h6>
+                    {{-- <span>Faucibus dictum suscipit eget metus. Duis  elit sem, sed.</span> --}}
                 </div>
             </div>
             <div class="single-support">
@@ -60,8 +60,8 @@
                    <i class="lnr lnr-users"></i>
                 </div>
                 <div class="support-desc">
-                    <h6>24/7 Help Center</h6>
-                    <span>Quisque posuere enim augue, in rhoncus diam dictum non.</span>
+                    <h6>Hỗ trợ 24/7</h6>
+                    {{-- <span>Quisque posuere enim augue, in rhoncus diam dictum non.</span> --}}
                 </div>
             </div>
         </div>

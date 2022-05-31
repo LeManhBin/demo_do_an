@@ -12,7 +12,8 @@ class SanPhamVueController extends Controller
 {
     public function index()
     {
-        return view('new_admin.pages.san_pham.index_vue');
+        $danhSachDanhMuc = DanhMucSanPham::all();
+        return view('new_admin.pages.san_pham.index', compact('danhSachDanhMuc'));
     }
     public function loadData()
     {

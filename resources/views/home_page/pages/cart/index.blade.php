@@ -40,32 +40,32 @@
                        <!-- Cart Button Start -->
                         <div class="col-md-8 col-sm-12">
                             <div class="buttons-cart">
-                                <input type="submit" value="Update Cart" />
-                                <a href="#">Continue Shopping</a>
+
+                                <a href="/">Tiếp tục mua sắm</a>
                             </div>
                         </div>
                         <!-- Cart Button Start -->
                         <!-- Cart Totals Start -->
                         <div class="col-md-4 col-sm-12">
                             <div class="cart_totals float-md-right text-md-right">
-                                <h2>Cart Totals</h2>
+                                <h2>Thành toán</h2>
                                 <br />
                                 <table class="float-md-right">
                                     <tbody>
                                         <tr class="cart-subtotal">
-                                            <th>Subtotal</th>
-                                            <td><span class="amount">@{{ formatNumber(tong_tien) }}</span></td>
+                                            <th>Tổng tiền</th>
+                                            <td><span class="amount">@{{ formatNumber(total()) }}</span></td>
                                         </tr>
-                                        <tr class="order-total">
+                                        {{-- <tr class="order-total">
                                             <th>Total</th>
                                             <td>
                                                 <strong><span class="amount">$215.00</span></strong>
                                             </td>
-                                        </tr>
+                                        </tr> --}}
                                     </tbody>
                                 </table>
-                                <div class="wc-proceed-to-checkout">
-                                    <a href="#">Proceed to Checkout</a>
+                                <div class="wc-proceed-to-checkout" v-on:click="createBill()">
+                                    <a href="#">Mua hàng</a>
                                 </div>
                             </div>
                         </div>
@@ -118,6 +118,26 @@
                         .then((res) => {
                             toastr.success("Đã cập nhật giỏ hàng!");
                             this.loadCart();
+                        });
+                },
+                total(){
+                    var tong_tien = 0;
+                    this.listCart.forEach((value, key) => {
+                        tong_tien += value.don_gia * value.so_luong;
+                    });
+                    return tong_tien;
+                },
+                createBill(){
+                    axios
+                        .get('/create-bill')
+                        .then((res)=>{
+                            if(res.data.status == true){
+                                toastr.success('Đã tạo đơn hàng thành công');
+                            }else if(res.data.status == 0){
+                                toastr.error("Tạo đơn hàng thất bại!");
+                            }else{
+                                toastr.warning("Chưa có sản phẩm nào!");
+                            }
                         });
                 },
             },

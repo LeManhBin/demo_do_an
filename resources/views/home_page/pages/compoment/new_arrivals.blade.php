@@ -3,7 +3,7 @@
         <div class="main-product-tab-area">
             <div class="tab-menu mb-25">
                 <div class="section-ttitle">
-                    <h2>New Arrivals</h2>
+                    <h2>Sản Phẩm mới</h2>
                </div>
                 <!-- Nav tabs -->
                 <ul class="nav tabs-area" role="tablist">
@@ -42,11 +42,11 @@
                                     </div>
                                     <div class="pro-actions">
                                         <div class="actions-primary">
-                                            <a title="Add to Cart" class="addToCart" data-id="{{ $value_sp->id }}" > + Add To Cart</a>
+                                            <a  class="addToCart" data-id="{{ $value_sp->id }}" >Thêm vào giỏ hàng</a>
                                         </div>
                                         <div class="actions-secondary">
-                                            <a href="compare.html" title="Compare"><i class="lnr lnr-sync"></i> <span>Add To Compare</span></a>
-                                            <a href="wishlist.html" title="WishList"><i class="lnr lnr-heart"></i> <span>Add to WishList</span></a>
+
+                                            <a class="add" data-id="{{ $value_sp->id }}"><i class="lnr lnr-heart"></i> <span>Yêu thích</span></a>
                                         </div>
                                     </div>
                                 </div>

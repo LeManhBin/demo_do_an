@@ -10,12 +10,7 @@
 </head>
 <body>
     <div class="wrapper">
-        <div class="popup_banner">
-            <span class="popup_off_banner">×</span>
-            <div class="banner_popup_area">
-                <img src="/assets_homepage/img/banner/pop-banner.jpg" alt="">
-            </div>
-        </div>
+
 
         @include('home_page.shares.top')
 
@@ -92,7 +87,7 @@
                                                 <form action="#">
                                                     <input class="quantity mr-40" type="number" min="1" value="1">
                                                 </form>
-                                                <a class="add-cart" href="cart.html">add to cart</a>
+                                                <a class="add-cart" href="cart.html">Thêm vào giỏ hàng</a>
                                             </div>
                                         </div>
                                     </div>
@@ -191,8 +186,45 @@
                         });
                     });
             });
+            $(".add").click(function(){
+                var san_pham_id = $(this).data('id');
+                console.log(123);
+                var payload = {
+                    'san_pham_id'   : san_pham_id,
+                    'so_luong'      : 1,
+                };
+                axios
+                    .post('/add-to-like', payload)
+                    .then((res) => {
+                        if(res.data.status) {
+                            toastr.success("Đã thêm vào yêu thích!");
+                        } else {
+                            toastr.error("Bạn cần đăng nhập trước!");
+                        }
+                    })
+                    .catch((res) => {
+                        var danh_sach_loi = res.response.data.errors;
+                        $.each(danh_sach_loi, function(key, value){
+                            toastr.error(value[0]);
+                        });
+                    });
+            });
+
         });
     </script>
+    <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/626a0372b0d10b6f3e6fb366/1g1n1quuc';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
 </body>
 
 </html>

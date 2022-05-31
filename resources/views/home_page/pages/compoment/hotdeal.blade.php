@@ -2,7 +2,7 @@
     <div class="container">
        <!-- Product Title Start -->
        <div class="post-title pb-30">
-           <h2>hot deals</h2>
+           <h2>Bán chạy nhất</h2>
        </div>
        <!-- Product Title End -->
         <!-- Hot Deal Product Activation Start -->
@@ -28,16 +28,16 @@
                     <div class="pro-actions">
                         @if (Auth::guard('agent')->check())
                             <div class="actions-primary">
-                                <a title="Add to Cart" class="addToCart" data-id="{{ $value->id }}"> + Add To Cart</a>
+                                <a  class="addToCart" data-id="{{ $value->id }}">Thêm vào giỏ hàng</a>
                             </div>
                         @else
                             <div class="actions-primary">
-                                <a href="cart.html" title="Add to Cart" data-toggle="modal" data-target="#myModal" > + Add To Cart</a>
+                                <a href="cart.html"  data-toggle="modal" data-target="#myModal" >Thêm vào giỏ hàng</a>
                             </div>
                         @endif
                         <div class="actions-secondary">
-                            <a href="compare.html" title="Compare"><i class="lnr lnr-sync"></i> <span>Add To Compare</span></a>
-                            <a href="wishlist.html" title="WishList"><i class="lnr lnr-heart"></i> <span>Add to WishList</span></a>
+
+                            <a class="add" data-id="{{ $value->id }}"><i class="lnr lnr-heart "></i> <span>Yêu thích</span></a>
                         </div>
                     </div>
                 </div>
@@ -83,4 +83,8 @@
       </div>
     </div>
 </div>
+<script>
+
+</script>
+
 

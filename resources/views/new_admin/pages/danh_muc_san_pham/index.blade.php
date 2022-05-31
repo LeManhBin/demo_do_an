@@ -45,10 +45,10 @@
                                         <div class="form-group">
                                             <label for="userinput3">Hình Ảnh</label>
                                             <div class="input-group">
-                                                <input v-model="hinh_anh" name="hinh_anh" class="form-control" type="text">
-                                                <input type="button" class="btn-info lfm" data-input="hinh_anh" data-preview="holder" value="Upload">
+                                                <input v-model="hinh_anh" name="hinh_anh" id="hinh_anh" class="form-control" type="text">
+                                                <input type="button" class="btn btn-info lfm" data-input="hinh_anh" data-preview="holder" value="Upload">
                                             </div>
-                                            <img style="margin-top:15px;max-height:100px;">
+                                            <img id="holder" style="margin-top:15px;max-height:100px;">
                                         </div>
                                     </div>
                                 </div>
@@ -215,14 +215,11 @@
 
 @endsection
 @section('js')
-<script src="/vendor/laravel-filemanager/js/lfm.js"></script>
-<script>
-    $('.lfm').filemanager('image');
-</script>
 <script>
     new Vue({
         el              : "#app",
         data            : {
+            danhMuc                 :   [],
             ten_danh_muc            :   '',
             slug_danh_muc           :   '',
             hinh_anh                :   '',
@@ -281,6 +278,8 @@
                     'id_danh_muc_cha'   :   this.id_danh_muc_cha,
                     'is_open'           :   this.is_open,
                 };
+
+                console.log(payload);
 
                 axios
                     .post('/admin/danh-muc-san-pham/index', payload)
@@ -383,5 +382,16 @@
             },
         },
     });
+</script>
+
+<script src="/vendor/laravel-filemanager/js/lfm.js"></script>
+<script>
+    $('.lfm').filemanager('image');
+    var options = {
+        filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+        filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+        filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+        filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+    };
 </script>
 @endsection

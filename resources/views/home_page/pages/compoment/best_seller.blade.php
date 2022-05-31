@@ -1,4 +1,4 @@
-<div class="second-arrivals-product pb-45 pb-sm-5">
+{{-- <div class="second-arrivals-product pb-45 pb-sm-5">
     <div class="container">
         <div class="main-product-tab-area">
             <div class="tab-menu mb-25">
@@ -36,16 +36,17 @@
                             <!-- Product Content Start -->
                             <div class="pro-content">
                                 <div class="pro-info">
-                                    <h4><a href="/san-pham/{{$value_sp->slug_san_pham}}-post{{ $value_sp->id }}">Work Lamp Silver Proin</a></h4>
-                                    <p><span class="price">$320.45</span></p>
+                                    <h4><a href="/san-pham/{{$value_sp->slug_san_pham}}-post{{ $value_sp->id }}">{{ $value_sp->ten_san_pham }}</a></h4>
+                                    <p><span class="price">{{ number_format($value_sp->gia_khuyen_mai) }}</span><del class="prev-price">{{ number_format($value_sp->gia_ban) }}</del></p>
+                                    <div class="label-product l_sale">{{ number_format( ($value_sp->gia_ban - $value_sp->gia_khuyen_mai) / $value_sp->gia_ban * 100, 2) }}<span class="symbol-percent">%</span></div>
                                 </div>
                                 <div class="pro-actions">
                                     <div class="actions-primary">
-                                        <a href="cart.html" title="Add to Cart"> + Add To Cart</a>
+                                        <a class="addToCart" data-id="{{ $value_sp->id }}" >Thêm vào giỏ hàng</a>
                                     </div>
                                     <div class="actions-secondary">
-                                        <a href="compare.html" title="Compare"><i class="lnr lnr-sync"></i> <span>Add To Compare</span></a>
-                                        <a href="wishlist.html" title="WishList"><i class="lnr lnr-heart"></i> <span>Add to WishList</span></a>
+
+                                        <a href="wishlist.html" title="WishList"><i class="lnr lnr-heart"></i> <span>Yêu thích</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -72,4 +73,4 @@
         <!-- main-product-tab-area-->
     </div>
     <!-- Container End -->
-</div>
+</div> --}}

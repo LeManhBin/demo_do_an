@@ -28,11 +28,11 @@
                                 <div class="pro-actions">
                                     @if (Auth::guard('agent')->check())
                                         <div class="actions-primary">
-                                            <a title="Add to Cart" class="addToCart" data-id="{{ $value_sp->id }}"> + Add To Cart</a>
+                                            <a  class="addToCart" data-id="{{ $value_sp->id }}"> Thêm vào giỏ hàng</a>
                                         </div>
                                     @else
                                         <div class="actions-primary">
-                                            <a href="cart.html" title="Add to Cart" data-toggle="modal" data-target="#myModal" > + Add To Cart</a>
+                                            <a href="cart.html"  data-toggle="modal" data-target="#myModal" > Thêm vào giỏ hàng</a>
                                         </div>
                                     @endif
                                     <div class="actions-secondary">
@@ -66,16 +66,16 @@
                                 <div class="pro-actions">
                                     @if (Auth::guard('agent')->check())
                                         <div class="actions-primary">
-                                            <a title="Add to Cart" class="addToCart" data-id="{{ $value_sp->id }}"> + Add To Cart</a>
+                                            <a  class="addToCart" data-id="{{ $value_sp->id }}"> Thêm vào giỏ hàng</a>
                                         </div>
                                     @else
                                         <div class="actions-primary">
-                                            <a href="cart.html" title="Add to Cart" data-toggle="modal" data-target="#myModal" > + Add To Cart</a>
+                                            <a href="cart.html"  data-toggle="modal" data-target="#myModal" > Thêm vào giỏ hàng</a>
                                         </div>
                                     @endif
                                     <div class="actions-secondary">
-                                        <a href="compare.html" title="Compare"><i class="lnr lnr-sync"></i> <span>Add To Compare</span></a>
-                                        <a href="wishlist.html" title="WishList"><i class="lnr lnr-heart"></i> <span>Add to WishList</span></a>
+
+                                        <a  class="add"><i class="lnr lnr-heart"></i> <span>Yêu thích</span></a>
                                     </div>
                                 </div>
                             </div>

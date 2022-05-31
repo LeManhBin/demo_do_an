@@ -24,6 +24,7 @@ class ChiTietDonHangController extends Controller
     {
         // Phải kiểm tra xem là đã login hay chưa?
         $agent = Auth::guard('agent')->user();
+        // dd($agent);
         if($agent) {
             $sanPham = SanPham::find($request->san_pham_id);
 
@@ -41,6 +42,7 @@ class ChiTietDonHangController extends Controller
                     'don_gia'           => $sanPham->gia_khuyen_mai ? $sanPham->gia_khuyen_mai : $sanPham->gia_ban,
                     'so_luong'          => $request->so_luong,
                     'is_cart'           => 1,
+                    'thanh_tien'           => 0,
                     'agent_id'          => $agent->id,
                 ]);
             }
@@ -112,6 +114,7 @@ class ChiTietDonHangController extends Controller
     {
         //
     }
+
 
     /**
      * Store a newly created resource in storage.
