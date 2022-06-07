@@ -10,6 +10,8 @@
             </li>
             <li class=" nav-item"><a href="/admin/nhap-kho/index" ><i class="feather icon-folder"></i><span class="menu-title" data-i18n="">Quản Lý Kho</span></a>
             </li>
+            <li class=" nav-item"><a href="/don-hang/index" ><i class="feather icon-folder"></i><span class="menu-title" data-i18n="">Quản Lý Đơn Hàng</span></a>
+            </li>
             <li class=" nav-item"><a href="/admin/cau-hinh" ><i class="feather icon-folder"></i><span class="menu-title" data-i18n="">Quản Lý Slide</span></a>
             </li>
         </ul>

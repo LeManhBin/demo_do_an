@@ -49,10 +49,11 @@
                 <!-- Categorie Search Box Start Here -->
                 <div class="col-lg-5 col-md-8 ml-auto mr-auto col-10">
                     <div class="categorie-search-box">
-                        <form action="#">
+                        <form action="/admin/san-pham/search" method="post">
+                            @csrf
 
                             <input type="text" name="search" placeholder="Bạn cần tìm...">
-                            <button><i class="lnr lnr-magnifier"></i></button>
+                            <button type="submit"><i class="lnr lnr-magnifier"></i></button>
                         </form>
                     </div>
                 </div>

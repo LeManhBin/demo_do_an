@@ -3,13 +3,6 @@
 <div class="page-title-icon">
     <i class="pe-7s-car icon-gradient bg-mean-fruit"></i>
 </div>
-<div>
-    Quản Lý Sản Phẩm
-    <div class="page-title-subheading">
-        Thêm Mới Danh Sách Sản Phẩm và Quản Lý Các Loại Sản Phẩm
-        {{-- <button class="btn btn-warning" id="nutNew"> NÚT GỌI HÀM CHO VUI</button> --}}
-    </div>
-</div>
 
 @endsection
 
@@ -128,7 +121,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="reset" id="closeModal" class="btn btn-outline-secondary" data-dismiss="modal" value="close">
+                    <input type="reset" id="closeModalUpdate" class="btn btn-outline-secondary" data-dismiss="modal" value="close">
                     <input type="submit" id="updateSanPham" class="btn btn-outline-primary" data-dismiss="modal" value="Chỉnh sửa">
                 </div>
             </form>
@@ -416,6 +409,50 @@
             var id_can_xoa = $("#idCanXoa").val();
             satThu(id_can_xoa);
         });
+
+        // $("#updateSanPham").click(function(){
+        //     var val_ten_san_pham    = $("#ten_san_pham_edit").val();
+        //     var val_slug_danh_muc   = $("#slug_danh_muc_edit").val();
+        //     var val_gia_ban         = $("#gia_ban_edit").val();
+        //     var val_gia_khuyen_mai  = $("#gia_khuyen_mai_edit").val();
+        //     var val_anh_dai_dien    = $("#anh_dai_dien_edit").val();
+        //     var val_id_danh_muc     = $("#id_danh_muc_edit").val();
+        //     var val_mo_ta_ngan      = $("#mo_ta_ngan_edit").val();
+        //     var val_mo_ta_chi_tiet  = $("#mo_ta_chi_tiet_edit").val();
+        //     var val_is_open         = $("#is_open_edit").val();
+        //     var val_id              = $("#id_edit").val();
+
+        //     var payload = {
+        //         'ten_san_pham'      :   val_ten_san_pham,
+        //         'slug_danh_muc'     :   val_slug_danh_muc,
+        //         'gia_ban'           :   val_gia_ban,
+        //         'gia_khuyen_mai'    :   val_gia_khuyen_mai,
+        //         'anh_dai_dien'      :   val_anh_dai_dien,
+        //         'id_danh_muc'       :   val_id_danh_muc,
+        //         'mo_ta_ngan'        :   val_mo_ta_ngan,
+        //         'mo_ta_chi_tiet'    :   val_mo_ta_chi_tiet,
+        //         'is_open'           :   val_is_open,
+        //         'id'                :   val_id,
+        //     };
+        //     $.ajax({
+        //         url     :   '/admin/san-pham/updateSanPham',
+        //         type    :   'post',
+        //         data    :   payload,
+        //         success :   function(res) {
+        //             if(res.status) {
+        //                 toastr.success('Sản phẩm đã được cập nhật!');
+        //                 $('#closeModalUpdate').click();
+        //                 loadTable();
+        //                 $('#holder_edit').attr('src', '');
+        //             }
+        //         },
+        //         error   :   function(res) {
+        //             var danh_sach_loi = res.responseJSON.errors;
+        //             $.each(danh_sach_loi, function(key, value){
+        //                 toastr.error(value[0]);
+        //             });
+        //         },
+        // });
     });
 </script>
 @endsection

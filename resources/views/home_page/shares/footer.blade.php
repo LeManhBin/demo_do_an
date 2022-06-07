@@ -95,7 +95,7 @@
                         <div class="footer-content">
                             <ul class="footer-list address-content">
                                 <li><i class="lnr lnr-map-marker"></i> Địa chỉ: 03 3 Quang Trung, Thạch Thang, Hải Châu, Đà Nẵng</li>
-                                <li><i class="lnr lnr-envelope"></i><a href="#"> Email: llemanhbin@gmail.com </a></li>
+                                <li><i class="lnr lnr-envelope"></i><a> Email: llemanhbin@gmail.com </a></li>
                                 <li>
                                     <i class="lnr lnr-phone-handset"></i> Phone: (+84) 365160470
                                 </li>

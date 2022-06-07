@@ -70,6 +70,16 @@
                             <form action="#">
                                 <input class="quantity mr-15" type="number" min="1" value="1">
                             </form>
+                        <div class="mb-2">
+                            <form action="#" class="mb-2">
+                                <button type="button" class="btn btn-secondary">37</button>
+                                <button type="button" class="btn btn-secondary">38</button>
+                                <button type="button" class="btn btn-secondary">39</button>
+                                <button type="button" class="btn btn-secondary">40</button>
+                                <button type="button" class="btn btn-secondary">41</button>
+                                <button type="button" class="btn btn-secondary">42</button>
+                            </form>
+                        </div>
                             <div class="pro-actions">
                                 @if (Auth::guard('agent')->check())
                                     <div class="actions-primary">
@@ -234,7 +244,7 @@
     <div class="container">
        <!-- Product Title Start -->
        <div class="post-title pb-30">
-           <h2>Realted Products</h2>
+           <h2>Sản Phẩm Tương Tự</h2>
        </div>
        <!-- Product Title End -->
         <!-- Hot Deal Product Activation Start -->

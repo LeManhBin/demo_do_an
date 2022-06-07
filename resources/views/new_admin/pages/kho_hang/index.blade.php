@@ -35,6 +35,7 @@
                             </tr>
                         </thead>
                         <tbody>
+
                             <tr v-for="(value, key) in danhSachSanPham">
                                 <th class="text-center">@{{ key + 1 }}</th>
                                 <td>@{{ value.ten_san_pham }}</td>
@@ -42,6 +43,7 @@
                                     <button v-on:click="addKhoHang(value.id)" class="btn btn-info btn-sm">Add</button>
                                 </td>
                             </tr>
+
                         </tbody>
                     </table>
                 </div>

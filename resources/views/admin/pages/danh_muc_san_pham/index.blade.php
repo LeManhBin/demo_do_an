@@ -3,11 +3,6 @@
 <div class="page-title-icon">
     <i class="pe-7s-car icon-gradient bg-mean-fruit"></i>
 </div>
-<div>Quản Lý Danh Mục
-    <div class="page-title-subheading">
-        Thêm Mới Danh Sách Danh Mục và Quản Lý Các Loại Danh Mục.
-    </div>
-</div>
 @endsection
 @section('content')
 <div class="row">

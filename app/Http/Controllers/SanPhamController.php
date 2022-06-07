@@ -91,8 +91,12 @@ class SanPhamController extends Controller
     }
     public function search(Request $request)
     {
-        $data = SanPham::where('ten_san_pham', 'like', '%' . $request->tenSanPham .'%')->get();
+        $sanPham = SanPham::where('ten_san_pham', 'like', '%' . $request->search .'%')->get();
+        // dd($sanPham->toArray());
 
-        return response()->json(['dataProduct' => $data]);
+        return view('home_page.pages.search.index',compact('sanPham'));
+    }
+    public function viewSearch(){
+        return view('home_page.pages.search.index','data');
     }
 }

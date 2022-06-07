@@ -4,7 +4,7 @@
 <meta name="description" content="Stack admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
 <meta name="keywords" content="admin template, stack admin template, dashboard template, flat admin template, responsive admin template, web app">
 <meta name="author" content="PIXINVENT">
-<title>Dark Layout - Stack Responsive Bootstrap 4 Admin Template</title>
+<title>Quản lí dự án</title>
 <link rel="apple-touch-icon" href="/new_assets_admin/app-assets/images/ico/apple-icon-120.png">
 <link rel="shortcut icon" type="image/x-icon" href="/new_assets_admin/app-assets/images/ico/favicon.ico">
 <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">

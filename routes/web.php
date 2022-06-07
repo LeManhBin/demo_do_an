@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [\App\Http\Controllers\HomePageController::class, 'index']);
-
+//thêm sản phẩm
 Route::get('/san-pham/{id}', [\App\Http\Controllers\HomePageController::class, 'viewSanPham']);
 Route::get('/danh-muc/{id}', [\App\Http\Controllers\HomePageController::class, 'viewDanhMuc']);
 Route::get('/cart', [\App\Http\Controllers\ChiTietDonHangController::class, 'index']);
@@ -34,6 +34,7 @@ Route::post('/remove-yeuthich', [\App\Http\Controllers\YeuThichController::class
 Route::post('/add-to-like', [\App\Http\Controllers\YeuThichController::class, 'addToLike']);
 Route::get('/test', [\App\Http\Controllers\TestController::class, 'test']);
 
+//danh mục sản phẩm
 Route::group(['prefix' => '/admin'], function() {
     Route::group(['prefix' => '/danh-muc-san-pham'], function() {
         Route::get('/index', [\App\Http\Controllers\DanhMucSanPhamController::class, 'index']);
@@ -49,9 +50,9 @@ Route::group(['prefix' => '/admin'], function() {
         Route::get('/edit-form/{id}', [\App\Http\Controllers\DanhMucSanPhamController::class, 'edit_form']);
         Route::post('/update-form', [\App\Http\Controllers\DanhMucSanPhamController::class, 'update_form']);
 
-        // Route::get('/index-vue', [\App\Http\Controllers\DanhMucSanPhamController::class, 'index_vue']);
-    });
 
+    });
+//Sản phẩm
     Route::group(['prefix' => '/san-pham'], function() {
         Route::get('/index', [\App\Http\Controllers\SanPhamController::class, 'index']);
         Route::post('/tao-san-pham', [\App\Http\Controllers\SanPhamController::class, 'HamTaoSanPhamDayNe']);
@@ -64,23 +65,11 @@ Route::group(['prefix' => '/admin'], function() {
         Route::get('/edit/{id}', [\App\Http\Controllers\SanPhamController::class, 'editSanPham']);
         Route::post('/update', [\App\Http\Controllers\SanPhamController::class, 'updateSanPham']);
 
+        Route::get('/search', [\App\Http\Controllers\SanPhamController::class, 'viewSearch']);
+
         Route::post('/search', [\App\Http\Controllers\SanPhamController::class, 'search']);
     });
-//---------------------------
-    // Route::group(['prefix' => '/san-pham'], function() {
-    //     Route::get('/index', [\App\Http\Controllers\SanPhamVueController::class, 'index']);
-
-    //     Route::get('/changeStatus/{id}', [\App\Http\Controllers\SanPhamVueController::class, 'changeStatus']);
-
-    //     Route::get('/loadData', [\App\Http\Controllers\SanPhamVueController::class, 'loadData']);
-    //     Route::post('/create', [\App\Http\Controllers\SanPhamVueController::class, 'store']);
-    //     Route::post('/update', [\App\Http\Controllers\SanPhamVueController::class, 'update']);
-    //     Route::get('/edit/{id}', [\App\Http\Controllers\SanPhamVueController::class, 'edit']);
-    //     Route::get('/delete/{id}', [\App\Http\Controllers\SanPhamVueController::class, 'delete']);
-
-        // Route::post('/search', [\App\Http\Controllers\SanPhamVueController::class, 'search']);
-    // });
-//------------------------------
+//Nhập hàng
     Route::group(['prefix' => '/nhap-kho'], function() {
         Route::get('/index', [\App\Http\Controllers\KhoHangController::class, 'index']);
 
@@ -98,7 +87,7 @@ Route::group(['prefix' => '/admin'], function() {
         Route::post('/', [\App\Http\Controllers\ConfigController::class, 'store']);
     });
 });
-
+//user
 Route::group(['prefix' => '/agent'], function() {
     Route::get('/product', [\App\Http\Controllers\SanPhamController::class, 'viewProduct']);
 });
@@ -117,3 +106,7 @@ Route::get('/admin/login', [\App\Http\Controllers\AdminAccController::class, 'lo
 Route::get('/admin/logout', [\App\Http\Controllers\AdminAccController::class, 'logout']);
 Route::post('/admin/login', [\App\Http\Controllers\AdminAccController::class, 'loginAction']);
 
+//Don hang
+Route::group(['prefix' => '/don-hang'], function() {
+Route::get('/index', [\App\Http\Controllers\QuanLiDonHangController::class, 'index']);
+});
