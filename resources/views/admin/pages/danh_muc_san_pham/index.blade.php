@@ -194,7 +194,6 @@
                         content_table += '<td class="text-center">';
                         content_table += '<button class="btn btn-danger delete mr-1" data-iddelete="'+ value.id +'" data-toggle="modal" data-target="#deleteModal">Delete</button>';
                         content_table += '<button class="btn btn-primary edit mr-1" data-idedit=' + value.id + ' data-toggle="modal" data-target="#editModal">Edit</button>';
-                        // content_table += '<a class="btn btn-warning" href="/admin/danh-muc-san-pham/edit-form/' + value.id + '">Edit Form</a>';
                         content_table += '</td>';
                         content_table += '</tr>';
                     });
@@ -208,8 +207,8 @@
                     $("#id_danh_muc_cha_edit").html(content_select);
                     $("#tableDanhMuc tbody").html(content_table);
 
-                    console.log(content_select);
-                    console.log(content_table);
+                    // console.log(content_select);
+                    // console.log(content_table);
                 },
             });
         }
@@ -220,7 +219,6 @@
             var tenDanhMuc = $("#ten_danh_muc").val();
             var slugDanhMuc = toSlug(tenDanhMuc);
             $("#slug_danh_muc").val(slugDanhMuc);
-            // $("#slug_danh_muc").val(toSlug($("#ten_danh_muc").val()));
         });
 
         $('body').on('click','.doiTrangThai',function(){

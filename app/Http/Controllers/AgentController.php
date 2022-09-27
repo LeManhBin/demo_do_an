@@ -6,7 +6,7 @@ use App\Models\Agent;
 use Illuminate\Http\Request;
 use App\Http\Requests\AgentRegisterRequest;
 use Illuminate\Support\Str;
-use App\Mail\MailKichHoatDaiLy;
+use App\Mail\MailKichHoatUser;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\AgentLoginRequest;
 use Illuminate\Support\Facades\Auth;
@@ -36,12 +36,12 @@ class AgentController extends Controller
         $data['hash']       = Str::uuid();
         $data['ho_lot']     = $firstname;
         $data['ten']        = $lastname;
-        $data['thanh_pho']  = "Đà Nẵng";
+        $data['thanh_pho']  = "";
         $data['password']   = bcrypt($request->password);
         Agent::create($data);
 
         // Gửi mail
-        Mail::to($request->email)->send(new MailKichHoatDaiLy(
+        Mail::to($request->email)->send(new MailKichHoatUser(
             $request->ho_va_ten,
             $data['hash'],
             'Kích Hoạt Tài Khoản Đăng Ký'

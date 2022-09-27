@@ -9,9 +9,9 @@
     <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>Login Page - Vuexy - Bootstrap HTML admin template</title>
+    <title>Admin login</title>
     <link rel="apple-touch-icon" href="../../../app-assets/images/ico/apple-icon-120.png">
-    <link rel="shortcut icon" type="image/x-icon" href="../../../app-assets/images/ico/favicon.ico">
+    {{-- <link rel="shortcut icon" type="image/x-icon" href="../../../app-assets/images/ico/favicon.ico"> --}}
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
 
     <!-- BEGIN: Vendor CSS-->
@@ -61,7 +61,7 @@
                         <!-- /Brand logo-->
                         <!-- Left Text-->
                         <div class="d-none d-lg-flex col-lg-8 align-items-center p-5">
-                            <div class="w-100 d-lg-flex align-items-center justify-content-center px-5"><img class="img-fluid" src="/images/admin.png" alt="Login V2" /></div>
+                            <div class="w-100 d-lg-flex align-items-center justify-content-center px-5"><img class="img-fluid" src="/images/admin-login.png" alt="Login V2" /></div>
                         </div>
                         <!-- /Left Text-->
                         <!-- Login-->
@@ -76,16 +76,17 @@
                                         <input class="form-control" id="account" type="text" name="account" placeholder="Nhập vào tài khoản" />
                                     </div>
                                     <div class="mb-1">
+                                        <label class="form-lanel">Mật khẩu</label>
                                         <div class="input-group input-group-merge form-password-toggle">
                                             <input class="form-control form-control-merge" id="password" type="password" name="password" placeholder="Nhập vào mật khẩu"  /><span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
                                         </div>
                                     </div>
-                                    <div class="mb-1">
+                                    {{-- <div class="mb-1">
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" />
                                             <label class="form-check-label" > Nhớ Mật Khẩu</label>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <button class="btn btn-primary w-100" id="admin_login" type="submit">Đăng Nhập</button>
                                 </form>
 
@@ -127,14 +128,18 @@
                 // console.log(payload);
 
                 $.ajax({
-                    url     :   '/admin/login',
+                    url     :   '/admin/login-action',
                     type    :   'post',
                     data    :    payload,
                     success :    function(res){
-                        toastr.success('Bạn đã login thành công!');
-                            setTimeout(function(){
-                                $(location).attr('href','http://127.0.0.1:8000/admin/danh-muc-san-pham/index');;
-                            }, 2000);
+                        console.log(res);
+                        if(res.status == 2){
+                            toastr.success("Đăng nhập thành công");
+                            window. location. replace("/")
+                        }else{
+                            toastr.error("Tài khoản hoặc mật khẩu không chính xác!");
+                        }
+                        console.log(status);
                     },
                     error   :    function(res) {
                         var danh_sach_loi = res.responseJSON.errors;

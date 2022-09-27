@@ -1,4 +1,4 @@
-<div class="top-new mb-40">
+{{-- <div class="top-new mb-40">
     <h3 class="sidebar-title">Top New</h3>
     <div class="side-product-active owl-carousel owl-loaded owl-drag">
         <!-- Side Item Start -->
@@ -232,4 +232,4 @@
             </div>
             <!-- Single Product End -->
         </div></div></div></div><div class="owl-nav disabled"><div class="owl-prev"><i class="lnr lnr-arrow-left"></i></div><div class="owl-next"><i class="lnr lnr-arrow-right"></i></div></div><div class="owl-dots disabled"></div></div>
-</div>
+</div> --}}

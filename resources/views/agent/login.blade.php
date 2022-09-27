@@ -25,15 +25,17 @@
                                         <div class="d-flex flex-row align-items-center mb-2">
                                             <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="email" id="email" class="form-control" />
                                                 <label class="form-label">Email</label>
+                                                <input type="email" id="email" class="form-control" />
+
                                             </div>
                                         </div>
                                         <div class="d-flex flex-row align-items-center mb-2">
                                             <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="password" id="password" class="form-control" />
                                                 <label class="form-label">Mật Khẩu</label>
+                                                <input type="password" id="password" class="form-control" />
+
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-end mx-4 mb-3 mb-lg-4">
@@ -45,7 +47,7 @@
                                 </div>
                                 <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
 
-                                    <img src="/images/imagelllo.png"
+                                    <img src="/images/logo-btech.png"
                                         class="img-fluid" alt="Sample image">
 
                                 </div>

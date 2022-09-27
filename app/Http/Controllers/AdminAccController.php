@@ -20,8 +20,12 @@ class AdminAccController extends Controller
         $check = Auth::guard('admin')->attempt($data);
         if($check)
         {
-            toastr()->success("Đăng Nhập Thành Công");
+            //Login thành công
+            return response()->json(['status'=>2]);
 
+        }else{
+            //Login thất bại
+            return response()->json(['status' =>0]);
         }
     }
 }

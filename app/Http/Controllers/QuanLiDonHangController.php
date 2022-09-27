@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\QuanLiDonHang;
+use App\Models\DonHang;
 use Illuminate\Http\Request;
 
 class QuanLiDonHangController extends Controller
@@ -16,70 +16,19 @@ class QuanLiDonHangController extends Controller
     {
         return view('admin.pages.don_hang.index');
     }
+    public function ListDonHang(){
+        $data =  DonHang::all();
+        return response()->json([
+            'dulieudonhang' => $data
+        ]);
+    }
+    public function deleteDonHang($id){
+        $don_hang = DonHang::find($id);
+        if($don_hang) {
+            $don_hang->delete();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+            return response()->json(['status' => true]);
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\QuanLiDonHang  $quanLiDonHang
-     * @return \Illuminate\Http\Response
-     */
-    public function show(QuanLiDonHang $quanLiDonHang)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\QuanLiDonHang  $quanLiDonHang
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(QuanLiDonHang $quanLiDonHang)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\QuanLiDonHang  $quanLiDonHang
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, QuanLiDonHang $quanLiDonHang)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\QuanLiDonHang  $quanLiDonHang
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(QuanLiDonHang $quanLiDonHang)
-    {
-        //
-    }
 }

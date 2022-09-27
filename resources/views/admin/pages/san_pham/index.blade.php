@@ -23,7 +23,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" id="taoChinhLaThangXoa" class="btn btn-danger" data-dismiss="modal">Xóa Sản Phẩm</button>
+          <button type="button" id="is_xoa" class="btn btn-danger" data-dismiss="modal">Xóa Sản Phẩm</button>
         </div>
       </div>
     </div>
@@ -104,6 +104,9 @@
                                             {{-- @foreach ($danhSachDanhMuc as $value)
                                                 <option value={{$value->id}}> {{ $value->ten_danh_muc }} </option>
                                             @endforeach --}}
+                                            @foreach ($list_danh_muc as $value)
+                                                <option value={{$value->id}}> {{ $value->ten_danh_muc }} </option>
+                                            @endforeach
                                         </select>
                                     </fieldset>
                                 </div>
@@ -213,7 +216,7 @@
     <div class="col-md-12">
         <div class="table-response">
             <div class="main-card mb-3 card">
-                <div class="card-body"><h5 class="card-title">Table bordered</h5>
+                <div class="card-body"><h5 class="card-title">Quản Lí Sản Phẩm</h5>
                     <table class="mb-0 table table-bordered" id="tableSanPham">
                         <thead>
                         <tr>
@@ -284,14 +287,14 @@
             $("#slug_san_pham").val(slugSanPham);
         });
 
-        function layDuLieu() {
+        function loadData() {
             $.ajax({
                 url     :   '/admin/san-pham/danh-sach-san-pham',
                 type    :   'get',
                 success :   function(res) {
                     var html = '';
 
-                    $.each(res.dulieuneban, function(key, value) {
+                    $.each(res.dulieu, function(key, value) {
                         if(value.is_open == true) {
                             var doan_muon_hien_thi = '<button class="btn btn-primary doiTrangThai" data-id="' + value.id + '">Hiển Thị</button>';
                         } else {
@@ -318,7 +321,7 @@
             });
         }
 
-        layDuLieu();
+        loadData();
 
         $("#createSanPham").click(function(e){
             e.preventDefault();
@@ -332,7 +335,7 @@
             var id_danh_muc         = $("#id_danh_muc").val();
             var is_open             = $("#is_open").val();
 
-            var thongTinSanPhamCanTao = {
+            var thongTinSanPham = {
                 'ten_san_pham'          :   ten_san_pham,
                 'slug_san_pham'         :   slug_san_pham,
                 'gia_ban'               :   gia_ban,
@@ -344,21 +347,23 @@
                 'is_open'               :   is_open,
             };
 
-            console.log(thongTinSanPhamCanTao);
+            console.log(thongTinSanPham);
 
             $.ajax({
                 url     :   '/admin/san-pham/tao-san-pham',
                 type    :   'post',
-                data    :   thongTinSanPhamCanTao,
+                data    :   thongTinSanPham,
                 success :   function(res) {
                     console.log(res);
-                    if(res.thongBao == 1235) {
-                        layDuLieu();
+                    if(res.notification == 1) {
+                        loadData();
                         $('#formCreate').trigger("reset");
                         CKEDITOR.instances.mo_ta_chi_tiet.setData('');
                         $('#holder').attr('src', '');
                         toastr.success('Thêm mới sản phẩm thành công!');
+                        console.log(toastr);
                     }
+
                 },
                 error   :   function(res) {
                     var errros = res.responseJSON.errors;
@@ -370,89 +375,124 @@
         });
 
         $("#nutNew").click(function(e){
-            layDuLieu();
+            loadData();
         });
 
         $('body').on('click', '.doiTrangThai', function(){
-            var id_cua_em = $(this).data('id');
+            var id_product = $(this).data('id');
             $.ajax({
-                url     :   '/admin/san-pham/doi-trang-thai/' + id_cua_em,
+                url     :   '/admin/san-pham/doi-trang-thai/' + id_product,
                 type    :   'get',
                 success :   function(res) {
                     if(res.status) {
-                        layDuLieu();
+                        loadData();
+                        toastr.success('Đổi trạng thái thành công!');
                     }
                 },
             });
         });
         $('body').on('click', '.nutDelete', function(){
             console.log(123);
-            var id_cua_em = $(this).data('id');
-            console.log(id_cua_em);
-            $("#idCanXoa").val(id_cua_em);
+            var id_product = $(this).data('id');
+            console.log(id_product);
+            $("#idCanXoa").val(id_product);
         });
 
 
-        function satThu(id) {
+        function xoasanpham(id) {
             $.ajax({
 				url     :   '/admin/san-pham/xoa-san-pham/' + id,
 				type    :   'get',
 				success :   function(res) {
 					if(res.status) {
-						layDuLieu();
+						loadData();
 					}
 				},
 			});
         }
 
-        $("#taoChinhLaThangXoa").click(function(){
+        $("#is_xoa").click(function(){
             var id_can_xoa = $("#idCanXoa").val();
-            satThu(id_can_xoa);
+            xoasanpham(id_can_xoa);
+            toastr.success('Xoá sản phẩm thành công!');
         });
 
-        // $("#updateSanPham").click(function(){
-        //     var val_ten_san_pham    = $("#ten_san_pham_edit").val();
-        //     var val_slug_danh_muc   = $("#slug_danh_muc_edit").val();
-        //     var val_gia_ban         = $("#gia_ban_edit").val();
-        //     var val_gia_khuyen_mai  = $("#gia_khuyen_mai_edit").val();
-        //     var val_anh_dai_dien    = $("#anh_dai_dien_edit").val();
-        //     var val_id_danh_muc     = $("#id_danh_muc_edit").val();
-        //     var val_mo_ta_ngan      = $("#mo_ta_ngan_edit").val();
-        //     var val_mo_ta_chi_tiet  = $("#mo_ta_chi_tiet_edit").val();
-        //     var val_is_open         = $("#is_open_edit").val();
-        //     var val_id              = $("#id_edit").val();
+        //update
 
-        //     var payload = {
-        //         'ten_san_pham'      :   val_ten_san_pham,
-        //         'slug_danh_muc'     :   val_slug_danh_muc,
-        //         'gia_ban'           :   val_gia_ban,
-        //         'gia_khuyen_mai'    :   val_gia_khuyen_mai,
-        //         'anh_dai_dien'      :   val_anh_dai_dien,
-        //         'id_danh_muc'       :   val_id_danh_muc,
-        //         'mo_ta_ngan'        :   val_mo_ta_ngan,
-        //         'mo_ta_chi_tiet'    :   val_mo_ta_chi_tiet,
-        //         'is_open'           :   val_is_open,
-        //         'id'                :   val_id,
-        //     };
-        //     $.ajax({
-        //         url     :   '/admin/san-pham/updateSanPham',
-        //         type    :   'post',
-        //         data    :   payload,
-        //         success :   function(res) {
-        //             if(res.status) {
-        //                 toastr.success('Sản phẩm đã được cập nhật!');
-        //                 $('#closeModalUpdate').click();
-        //                 loadTable();
-        //                 $('#holder_edit').attr('src', '');
-        //             }
-        //         },
-        //         error   :   function(res) {
-        //             var danh_sach_loi = res.responseJSON.errors;
-        //             $.each(danh_sach_loi, function(key, value){
-        //                 toastr.error(value[0]);
-        //             });
-        //         },
-        // });
+        $('body').on('click','.nutEdit',function(){
+            var id = $(this).data('id');
+            console.log(id);
+            $.ajax({
+                url     : '/admin/san-pham/edit/' + id,
+                type    : 'get',
+                success : function(res){
+                    if(res.status){
+                        console.log(res.data);
+                        $("#ten_san_pham_edit").val(res.data.ten_san_pham);
+                        $("#slug_san_pham_edit").val(res.data.slug_san_pham);
+                        $("#gia_ban_edit").val(res.data.gia_ban);
+                        $("#gia_khuyen_mai_edit").val(res.data.gia_khuyen_mai);
+                        $("#anh_dai_dien_edit").val(res.data.anh_dai_dien);
+                        $("#id_danh_muc_edit").val(res.data.id_danh_muc);
+                        $("#mo_ta_ngan_edit").val(res.data.mo_ta_ngan);
+                        $("#mo_ta_chi_tiet_edit").val(res.data.mo_ta_chi_tiet);
+                        $("#is_open_edit").val(res.data.is_open);
+                        $("#id_edit").val(res.data.id);
+                    }else{
+                        toastr.error('Sản phẩm không tồn tại!');
+                        window.setTimeout(function() {
+                            $('#closeModal').click();
+                        }, 1000 );
+                    }
+                }
+            });
+        });
+        $("#updateSanPham").click(function(){
+            var val_ten_san_pham    = $("#ten_san_pham_edit").val();
+            var val_slug_san_pham   = $("#slug_san_pham_edit").val();
+            var val_gia_ban         = $("#gia_ban_edit").val();
+            var val_gia_khuyen_mai  = $("#gia_khuyen_mai_edit").val();
+            var val_anh_dai_dien    = $("#anh_dai_dien_edit").val();
+            var val_id_danh_muc     = $("#id_danh_muc_edit").val();
+            var val_mo_ta_ngan      = $("#mo_ta_ngan_edit").val();
+            var val_mo_ta_chi_tiet  = $("#mo_ta_chi_tiet_edit").val();
+            var val_is_open         = $("#is_open_edit").val();
+            var val_id              = $("#id_edit").val();
+
+            var payload = {
+                'ten_san_pham'      :   val_ten_san_pham,
+                'slug_san_pham'     :   val_slug_san_pham,
+                'gia_ban'           :   val_gia_ban,
+                'gia_khuyen_mai'    :   val_gia_khuyen_mai,
+                'anh_dai_dien'      :   val_anh_dai_dien,
+                'id_danh_muc'       :   val_id_danh_muc,
+                'mo_ta_ngan'        :   val_mo_ta_ngan,
+                'mo_ta_chi_tiet'    :   val_mo_ta_chi_tiet,
+                'is_open'           :   val_is_open,
+                'id'                :   val_id,
+            };
+            $.ajax({
+                url     :   '/admin/san-pham/update',
+                type    :   'post',
+                data    :   payload,
+                success :   function(res) {
+                    if(res.status) {
+                        toastr.success('Sản phẩm đã được cập nhật!');
+                        $('#closeModalUpdate').click();
+                        loadData();
+                        $('#holder_edit').attr('src', '');
+
+                    }
+                },
+                error   :   function(res) {
+                    var danh_sach_loi = res.responseJSON.errors;
+                    $.each(danh_sach_loi, function(key, value){
+                        toastr.error(value[0]);
+                    });
+                },
+            });
+        });
     });
+    // });
 </script>
 @endsection

@@ -5,7 +5,7 @@
         <div class="col-lg-4 col-md-4 col-sm-6 col-6">
             <div class="single-product">
                 <!-- Product Image Start -->
-                <div class="pro-img">
+                <div class="pro-img" >
                     <a href="/san-pham/{{$value->slug_san_pham}}-post{{ $value->id }}">
                         <img class="primary-img" src="{{ $value->anh_dai_dien }}" alt="single-product">
                         <img class="secondary-img" src="{{ $value->anh_dai_dien }}" alt="single-product">
@@ -17,8 +17,9 @@
                 <div class="pro-content">
                     <div class="pro-info">
                         <h4><a href="/san-pham/{{$value->slug_san_pham}}-post{{ $value->id }}">{{ $value->ten_san_pham }}</a></h4>
-                        <p><span class="price">{{ number_format($value->gia_khuyen_mai, 0) }} VNĐ</span><del class="prev-price">$400.50</del></p>
-                        <div class="label-product l_sale">30<span class="symbol-percent">%</span></div>
+                        <p><span class="price">{{ number_format($value->gia_khuyen_mai, 0) }}</span><del class="prev-price">{{ number_format($value->gia_ban, 0) }}</del></p>
+                        <div class="label-product l_sale">{{ number_format(($value->gia_ban - $value->gia_khuyen_mai) / $value->gia_ban * 100, 0 )}}<span class="symbol-percent">%</span></div>
+
                     </div>
                     <div class="pro-actions">
                         @if (Auth::guard('agent')->check())

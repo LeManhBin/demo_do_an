@@ -1,60 +1,123 @@
 @extends('new_admin.master')
 @section('title')
-    <h3>Quản Lý Đơn Hàng</h3>
+<div class="page-title-icon">
+    <i class="pe-7s-car icon-gradient bg-mean-fruit"></i>
+</div>
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Xóa Đơn hàng</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            Bạn có chắc chắn muốn xóa? Điều này không thể hoàn tác!
+            <input type="text" class="form-control" placeholder="Nhập vào id cần xóa" id="idCanXoa" hidden>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" id="xoa" class="btn btn-danger" data-dismiss="modal">Xóa Đơn Hàng</button>
+        </div>
+      </div>
+    </div>
+</div>
 @endsection
 @section('content')
-<div id="app" class="row">
-        <div class="card">
-            <div class="card-header" style="height: auto">
-                <h4 class="card-title">Đơn hàng</h4>
-                <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
-                <div class="heading-elements">
-                    <ul class="list-inline mb-0">
-                        <li><a data-action="collapse"><i class="feather icon-minus"></i></a></li>
-                        <li><a data-action="reload"><i class="feather icon-rotate-cw"></i></a></li>
-                        <li><a data-action="expand"><i class="feather icon-maximize"></i></a></li>
-                        <li><a data-action="close"><i class="feather icon-x"></i></a></li>
-                    </ul>
-                </div>
+<div class="col-md-12">
+    <div class="table-response">
+        <div class="main-card mb-3 card">
+            <div class="card-body"><h5 class="card-title">Quản Lí đơn hàng</h5>
+                <table class="mb-0 table table-bordered" id="tableDonHang">
+                    <thead>
+                    <tr>
+                        <th class="text-nowrap text-center">#</th>
+                        <th class="text-nowrap text-center">Mã đơn hàng</th>
+                        <th class="text-nowrap text-center">Tổng tiền</th>
+                        <th class="text-nowrap text-center">Khuyến mãi</th>
+                        <th class="text-nowrap text-center">Thực trả</th>
+                        <th class="text-nowrap text-center">Loại thanh toán</th>
+                        <th class="text-nowrap text-center">Trạng Thái</th>
+                        <th class="text-nowrap text-center">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
-            <div class="card-content collapse show">
-                <div class="card-body">
-                    <table class="table table-bordered mb-0">
-                        <thead>
-                            <tr class="text-center">
-                                <th class="text-center">#</th>
-                                <th class="text-center">Tên Khách Hàng</th>
-                                <th class="text-center">Địa Chỉ</th>
-                                <th class="text-center">Số Điện Thoại</th>
-                                <th class="text-center">Tên Sản Phẩm</th>
-                                <th class="text-center">Số Lượng</th>
-                                <th class="text-center">Thành Tiền</th>
-                                <th class="text-center">Tình Trạng</th>
-                                <th class="text-center">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th class="text-center">1</th>
-                                <th class="text-center">Lê Mạnh Bin</th>
-                                <th class="text-center">Đà Nẵng</th>
-                                <th class="text-center">0365160470</th>
-                                <th class="text-center">Nike Air Force 1 - All White</th>
-                                <th class="text-center">1</th>
-                                <th class="text-center">2,649,000</th>
-                                <th> <button type="button" class="btn btn-success">Đã giao</button></th>
-                                <th>
-                                    <button class="btn btn-danger delete mr-1">Delete</button>
-                                    <button class="btn btn-primary edit mr-1" >?</button>
-                                </th>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
         </div>
     </div>
+</div>
 @endsection
+@section('js')
 
+<script>
+    $(document).ready(function(){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        function loadData() {
+            $.ajax({
+                url     :   '/don-hang/danh-sach-don-hang',
+                type    :   'get',
+                success :   function(res) {
+                    var html = '';
+
+
+
+                    $.each(res.dulieudonhang, function(key, value) {
+                        html += '<tr>';
+                        html += '<th scope="row">' + (key + 1) + '</th>';
+                        html += '<td>' + value.ma_don_hang + '</td>';
+                        html += '<td>' + value.tong_tien + '</td>';
+                        html += '<td>' + value.tien_giam_gia + '</td>';
+                        html += '<td>' + value.thuc_tra + '</td>';
+                        html += '<td>' + value.loai_thanh_toan + '</td>';
+                        html += '<td>'
+                        html += '<button type="button" class="btn btn-warning">Đang giao</button>'
+                        html += '</td>';
+                        html += '<td>';
+                        html += '<button class="btn btn-danger nutDelete mr-1" data-id="' + value.id + '" data-toggle="modal" data-target="#deleteModal"> Xóa </button>';
+                        html += '</td>';
+                        html += '</tr>';
+
+                    });
+                    $("#tableDonHang tbody").html(html);
+
+
+                },
+            });
+
+        }
+        loadData();
+        $('body').on('click', '.nutDelete', function(){
+
+            var id_don_hang = $(this).data('id');
+            console.log(id_don_hang);
+            $("#idCanXoa").val(id_don_hang);
+        });
+
+
+        function xoadonhang(id) {
+            $.ajax({
+				url     :   '/don-hang/xoa-don-hang/' + id,
+				type    :   'get',
+				success :   function(res) {
+					if(res.status) {
+						loadData();
+					}
+				},
+			});
+        }
+
+        $("#xoa").click(function(){
+            var id_can_xoa = $("#idCanXoa").val();
+            xoadonhang(id_can_xoa);
+            toastr.success('Xoá đơn hàng thành công thành công!');
+        });
+    });
+</script>
+@endsection

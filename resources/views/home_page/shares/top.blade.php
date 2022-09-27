@@ -43,7 +43,7 @@
             <div class="row align-items-center no-gutters">
                 <div class="col-lg-3 col-md-12">
                     <div class="logo mb-all-30">
-                        <a href="/"><img src="/images/Sneakers.png" alt="logo-image" height="150px"></a>
+                        <a href="/"><img src="/images/logo-btech.png" alt="logo-image" height="150px"></a>
                     </div>
                 </div>
                 <!-- Categorie Search Box Start Here -->
@@ -62,12 +62,15 @@
                 <div class="col-lg-4 col-md-12">
                     <div class="cart-box mt-all-30">
                         <ul class="d-flex justify-content-lg-end justify-content-center align-items-center">
-                            <li><a href="/cart"><i class="lnr lnr-cart"></i><span class="my-cart"><span class="total-pro"></span><span>Giỏ hàng</span></span></a>
+                            <li>
+                                <a href="/cart"><i class="lnr lnr-cart"></i>
+                                <span class="my-cart"><span class="total-pro"></span><span>Giỏ hàng</span></span></a>
                                 <ul class="ht-dropdown cart-box-width" id="cartTop">
 
                                 </ul>
                             </li>
-                            <li><a href="/yeuthich"><i class="lnr lnr-heart"></i><span class="my-cart"><span>Yêu thích</span></span></a>
+                            <li><a href="/yeuthich"><i class="lnr lnr-heart"></i>
+                                <span class="my-cart"><span class="total-pro"></span><span>Yêu thích</span></span></a>
                             </li>
                             @if (Auth::guard('agent')->check())
                                 <li><a href="#"><i class="lnr lnr-user"></i>
@@ -81,7 +84,7 @@
                             @else
                                 <li>
                                     <a href="/agent/login"><i class="lnr lnr-user"></i>
-                                    <span class="my-cart align-middle">Sign In</span>
+                                    <span class="my-cart"><span class="total-pro"></span><span>Sign in</span></span>
                                     </a>
                                 </li>
                             @endif
@@ -105,15 +108,15 @@
                 <div class="col-xl-9 col-lg-8 col-md-12 ">
                     <nav class="d-none d-lg-block">
                         <ul class="header-bottom-list d-flex">
-                            <li class="active"><a href="/">Home</a>
+                            <li class="active"><a href="/"> <img src="/images/home.png" width="25" height="25" alt=""> Home</a>
                             </li>
                             @foreach ($menuCha as $value_cha)
                             <li>
-                                <a href="/danh-muc/{{$value_cha->slug_danh_muc}}-post{{ $value_cha->id }}">{{ $value_cha->ten_danh_muc }}<i class="fa fa-angle-down"></i></a>
+                                <a href="/danh-muc/{{$value_cha->slug_danh_muc}}-post{{ $value_cha->id }}"><img src="{{$value_cha->hinh_anh}}" alt="" width="25" height="25" style="">{{ $value_cha->ten_danh_muc }} <i class="fa fa-angle-down"></i></a>
                                 <ul class="ht-dropdown">
                                     @foreach ($menuCon as $value_con)
                                         @if($value_con->id_danh_muc_cha == $value_cha->id)
-                                            <li><a href="/danh-muc/{{ $value_con->id }}">{{ $value_con->ten_danh_muc }}</a></li>
+                                            <li><a href="/danh-muc/{{ $value_con->id }}"><img src="{{$value_con->hinh_anh}}" alt="" width="20" height="20" style="">&nbsp;{{ $value_con->ten_danh_muc }}</a></li>
                                         @endif
                                     @endforeach
                                 </ul>

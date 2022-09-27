@@ -18,22 +18,22 @@ class SanPhamController extends Controller
         return view('admin.pages.san_pham.index', compact('list_danh_muc'));
     }
 
-    public function HamTaoSanPhamDayNe(KiemTraDuLieuTaoSanPham $bienNhanDuLieu)
+    public function CreateSanPham(KiemTraDuLieuTaoSanPham $bienNhanDuLieu)
     {
         $data = $bienNhanDuLieu->all();
         SanPham::create($data);
 
-        return response()->json(['thongBao' => 1235]);
+        return response()->json(['notification' => 1]);
     }
 
-    public function TraChoMotDoanJsonDanhSachSanPham()
+    public function DanhSachSanPham()
     {
         $data = SanPham::join('danh_muc_san_phams', 'san_phams.id_danh_muc', 'danh_muc_san_phams.id')
                         ->select('san_phams.*', 'danh_muc_san_phams.ten_danh_muc')
                         ->get();
 
         return response()->json([
-            'dulieuneban' => $data
+            'dulieu' => $data
         ]);
     }
 

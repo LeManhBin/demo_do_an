@@ -82,10 +82,10 @@
                                 <th class="text-center align-middle">@{{ key + 1 }}</th>
                                 <td class="align-middle text-nowrap">@{{ value.ten_san_pham }}</td>
                                 <td class="align-middle" style="width: 50px">
-                                    <input v-on:change="update(value)" v-model="value.so_luong" type="number" min="1" class="form-control text-center" v-bind:value="value.so_luong">
+                                    <input v-on:change="update(value)" v-model="value.so_luong" type="number" min="1" class="form-control text-center">
                                 </td>
                                 <td class="align-middle">
-                                    <input v-on:keyup="update(value)" v-model="value.don_gia" type="number"  class="form-control text-center" v-bind:value="value.don_gia">
+                                    <input v-on:keyup="update(value)" v-model="value.don_gia" type="number"  class="form-control text-center">
                                 </td>
                                 <td class="align-middle">
                                     @{{ value.don_gia * value.so_luong }}
@@ -115,21 +115,26 @@
         created() {
             this.loadSanPham();
             this.loadTableBenPhai();
+
         },
+
         methods :   {
             loadTableBenPhai() {
                 axios
                     .get('/admin/nhap-kho/loadData')
                     .then((res) => {
                         this.danhSachKhoDangNhap = res.data.nhapKho;
+
                     });
             },
             loadSanPham() {
                 axios
-                    .get('/admin/san-pham/loadData')
+                    .get('/admin/san-pham/danh-sach-san-pham')
                     .then((res) => {
-                        this.danhSachSanPham = res.data.danhSachSanPham;
+                        // console.log(res.data.dulieu);
+                        this.danhSachSanPham = res.data.dulieu;
                     });
+
             },
             addKhoHang(id) {
                 axios
@@ -142,6 +147,7 @@
                         }
                     });
             },
+
             search() {
                 var payload = {
                     'tenSanPham'    :   this.inputSearch,

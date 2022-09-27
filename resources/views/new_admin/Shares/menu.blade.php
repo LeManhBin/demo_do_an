@@ -12,6 +12,8 @@
             </li>
             <li class=" nav-item"><a href="/don-hang/index" ><i class="feather icon-folder"></i><span class="menu-title" data-i18n="">Quản Lý Đơn Hàng</span></a>
             </li>
+            <li class=" nav-item"><a href="/admin/quan-li-tai-khoan/index" ><i class="feather icon-folder"></i><span class="menu-title" data-i18n="">Quản Lý Tài Khoản</span></a>
+            </li>
             <li class=" nav-item"><a href="/admin/cau-hinh" ><i class="feather icon-folder"></i><span class="menu-title" data-i18n="">Quản Lý Slide</span></a>
             </li>
         </ul>

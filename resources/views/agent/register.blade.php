@@ -87,7 +87,7 @@
 
                                 </div>
                                 <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-                                    <img src="/images/imagelogin.png"
+                                    <img src="/images/dangki.png" style="width:450px; height:650px ;"
                                         class="img-fluid" alt="Sample image">
                                 </div>
                             </div>
@@ -129,10 +129,10 @@
                     type    :   'post',
                     data    :   payload,
                     success :   function(res) {
-                        $("#messeger").append('<div class="alert alert-success " role="alert"> Vui lòng kiểm tra Email để kích hoạt tài khoản</div>');
+                        $("#messeger").append('<div class="alert alert-warning " role="alert"> Vui lòng kiểm tra Email để kích hoạt tài khoản</div>');
                         if(res.status){
                             console.log(res.status);
-                            toastr.success("Bạn đã đăng kí tài khoản thành công !!!");
+                            toastr.warning("Vui lòng kiểm tra Email để kích hoạt tài khoản!");
                             setTimeout(function(){
                                 $(location).attr('href','http://127.0.0.1:8000/agent/login');;
                             }, 2000);

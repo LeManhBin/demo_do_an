@@ -21,6 +21,7 @@ class CreateDonHangsTable extends Migration
             $table->double('thuc_tra', 18, 0);
             $table->integer('agent_id');
             $table->integer('loai_thanh_toan');
+
             $table->timestamps();
         });
     }

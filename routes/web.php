@@ -55,9 +55,9 @@ Route::group(['prefix' => '/admin'], function() {
 //Sản phẩm
     Route::group(['prefix' => '/san-pham'], function() {
         Route::get('/index', [\App\Http\Controllers\SanPhamController::class, 'index']);
-        Route::post('/tao-san-pham', [\App\Http\Controllers\SanPhamController::class, 'HamTaoSanPhamDayNe']);
+        Route::post('/tao-san-pham', [\App\Http\Controllers\SanPhamController::class, 'CreateSanPham']);
 
-        Route::get('/danh-sach-san-pham', [\App\Http\Controllers\SanPhamController::class, 'TraChoMotDoanJsonDanhSachSanPham']);
+        Route::get('/danh-sach-san-pham', [\App\Http\Controllers\SanPhamController::class, 'DanhSachSanPham']);
         Route::get('/doi-trang-thai/{id}', [\App\Http\Controllers\SanPhamController::class, 'DoiTrangThaiSanPham']);
 
         Route::get('/xoa-san-pham/{id}', [\App\Http\Controllers\SanPhamController::class, 'XoaSanPham']);
@@ -86,6 +86,13 @@ Route::group(['prefix' => '/admin'], function() {
         Route::get('/', [\App\Http\Controllers\ConfigController::class, 'index']);
         Route::post('/', [\App\Http\Controllers\ConfigController::class, 'store']);
     });
+    //Quan ly tai khoan
+    Route::group(['prefix' => '/quan-li-tai-khoan'], function() {
+    Route::get('/index', [\App\Http\Controllers\QuanLiTaiKhoanController::class, 'index']);
+    Route::get('/danh-sach-tai-khoan', [\App\Http\Controllers\QuanLiTaiKhoanController::class, 'ListTaiKhoan']);
+    Route::get('/xoa-tai-khoan/{id}', [\App\Http\Controllers\QuanLiTaiKhoanController::class, 'XoaTaiKhoan']);
+    });
+
 });
 //user
 Route::group(['prefix' => '/agent'], function() {
@@ -104,9 +111,12 @@ Route::group(['prefix' => '/admin'], function() {
 });
 Route::get('/admin/login', [\App\Http\Controllers\AdminAccController::class, 'login']);
 Route::get('/admin/logout', [\App\Http\Controllers\AdminAccController::class, 'logout']);
-Route::post('/admin/login', [\App\Http\Controllers\AdminAccController::class, 'loginAction']);
+Route::post('/admin/login-action', [\App\Http\Controllers\AdminAccController::class, 'loginAction']);
 
 //Don hang
 Route::group(['prefix' => '/don-hang'], function() {
 Route::get('/index', [\App\Http\Controllers\QuanLiDonHangController::class, 'index']);
+Route::get('/danh-sach-don-hang', [\App\Http\Controllers\QuanLiDonHangController::class, 'ListDonHang']);
+Route::get('/xoa-don-hang/{id}', [\App\Http\Controllers\QuanLiDonHangController::class, 'deleteDonHang']);
+
 });
