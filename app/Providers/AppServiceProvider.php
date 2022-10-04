@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        $menuCha = DanhMucSanPham::whereNull('id_danh_muc_cha')
+        $menuCha = DanhMucSanPham::where('id_danh_muc_cha', 0)
                                  ->where('is_open', 1)
                                  ->get();
         $menuCon = DanhMucSanPham::where('id_danh_muc_cha', '<>', 0)

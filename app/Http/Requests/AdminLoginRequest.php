@@ -24,7 +24,7 @@ class AdminLoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'account'     =>  'required',
+            'email'     =>  'required',
             'password'  =>  'required',
         ];
     }
@@ -39,7 +39,7 @@ class AdminLoginRequest extends FormRequest
     public function attributes()
     {
         return [
-            'account'   => 'Tài khoản',
+            'email'   => 'Tài khoản',
             'password'      => 'Mật khẩu',
         ];
     }

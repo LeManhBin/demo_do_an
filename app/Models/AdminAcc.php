@@ -12,7 +12,7 @@ class AdminAcc extends Authenticatable
     protected $table = 'admin_accs';
 
     protected $fillable = [
-        'account',
+        'email',
         'password',
     ];
 }

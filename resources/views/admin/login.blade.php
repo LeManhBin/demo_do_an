@@ -73,7 +73,7 @@
                                     @csrf
                                     <div class="mb-1">
                                         <label class="form-label">Tài khoản</label>
-                                        <input class="form-control" id="account" type="text" name="account" placeholder="Nhập vào tài khoản" />
+                                        <input class="form-control" id="email" type="email" name="email" placeholder="Nhập vào tài khoản" />
                                     </div>
                                     <div class="mb-1">
                                         <label class="form-lanel">Mật khẩu</label>
@@ -118,24 +118,24 @@
 
             $("#admin_login").click(function(e){
                 e.preventDefault();
-                var account = $("#account").val();
+                var email = $("#email").val();
                 var password = $("#password").val();
 
                 var payload = {
-                    'account'  : account,
+                    'email'     : email,
                     'password'  : password,
                 };
                 // console.log(payload);
 
                 $.ajax({
                     url     :   '/admin/login-action',
-                    type    :   'post',
                     data    :    payload,
+                    type    :   'post',
                     success :    function(res){
                         console.log(res);
-                        if(res.status == 2){
+                        if(res.status == 1){
                             toastr.success("Đăng nhập thành công");
-                            window. location. replace("/")
+                            window. location. replace("/admin/danh-muc-san-pham/index")
                         }else{
                             toastr.error("Tài khoản hoặc mật khẩu không chính xác!");
                         }

@@ -23,7 +23,7 @@ class DanhMucSanPhamController extends Controller
 
     public function getData()
     {
-        $danh_muc_cha = DanhMucSanPham::whereNull('id_danh_muc_cha')->get();
+        $danh_muc_cha = DanhMucSanPham::where('id_danh_muc_cha',0)->get();
 
         $sql = 'SELECT a.*, b.ten_danh_muc as `ten_danh_muc_cha`
                 FROM `danh_muc_san_phams` a LEFT JOIN `danh_muc_san_phams` b
@@ -104,7 +104,7 @@ class DanhMucSanPhamController extends Controller
     {
         $danh_muc = DanhMucSanPham::find($id);
         if($danh_muc) {
-            $danh_muc_cha = DanhMucSanPham::whereNull('id_danh_muc_cha')->get();
+            $danh_muc_cha = DanhMucSanPham::where('id_danh_muc_cha',0)->get();
             return view('admin.pages.danh_muc_san_pham.edit', compact('danh_muc','danh_muc_cha'));
         } else {
             toastr()->error("Danh mục không tồn tại!");

@@ -15,7 +15,7 @@ class CreateAdminAccsTable extends Migration
     {
         Schema::create('admin_accs', function (Blueprint $table) {
             $table->id();
-            $table->string('account');
+            $table->string('email');
             $table->string('password');
             $table->timestamps();
         });

@@ -21,7 +21,7 @@ class AdminAccController extends Controller
         if($check)
         {
             //Login thành công
-            return response()->json(['status'=>2]);
+            return response()->json(['status'=>1]);
 
         }else{
             //Login thất bại
