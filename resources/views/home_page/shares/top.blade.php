@@ -6,7 +6,7 @@
             <!-- Header Top Start -->
             <div class="header-top">
                 <ul>
-                    <li>Tài Khoản Của Tôi<i class="lnr lnr-chevron-down"></i>
+                    <li style="height: 40px">Tài Khoản Của Tôi<i class="lnr lnr-chevron-down"></i>
                         <!-- Dropdown Start -->
                         @if ( Auth::guard('agent')->check())
                             <ul class="ht-dropdown">
@@ -15,13 +15,13 @@
                         @else
                             <ul class="ht-dropdown">
                                 <li><a href="/agent/login">Đăng nhập</a></li>
-                                <li><a href="/agent/register">Đăng kí</a></li>
+                                {{-- <li><a href="/agent/register">Đăng kí</a></li> --}}
                             </ul>
                         @endif
 
                         <!-- Dropdown End -->
                     </li>
-                    <li>Quản trị viên<i class="lnr lnr-chevron-down"></i>
+                    {{-- <li>Quản trị viên<i class="lnr lnr-chevron-down"></i>
                         <!-- Dropdown Start -->
 
                             <ul class="ht-dropdown">
@@ -29,7 +29,7 @@
                             </ul>
 
                         <!-- Dropdown End -->
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
             <!-- Header Top End -->
@@ -79,6 +79,9 @@
                                                 <strong>{{ Auth::guard('agent')->user()->ho_va_ten }}</strong>
                                             </span>
                                         </span>
+                                        <ul class="ht-dropdown">
+                                            <li><a href="/agent/logout" style="color: black">Đăng xuất</a></li>
+                                        </ul>
                                     </a>
                                 </li>
                             @else
@@ -87,6 +90,7 @@
                                     <span class="my-cart"><span class="total-pro"></span><span>Sign in</span></span>
                                     </a>
                                 </li>
+
                             @endif
                         </ul>
                     </div>

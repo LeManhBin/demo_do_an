@@ -1,4 +1,4 @@
-<!doctype html>
+{{-- <!doctype html>
 <html lang="en">
 
 <head>
@@ -108,4 +108,191 @@
     </script>
 </body>
 
+</html> --}}
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Login</title>
+      <link rel="stylesheet" href="/style.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="csrf-token" content="{{ csrf_token() }}">
+      @toastr_css
+    </head>
+   <body>
+      <div class="wrapper">
+         <div class="title-text">
+            <div class="title login">
+               Đăng nhập
+            </div>
+            <div class="title signup">
+               Đăng ký
+            </div>
+         </div>
+         <div class="form-container">
+            <div class="slide-controls">
+               <input type="radio" name="slide" id="login" checked>
+               <input type="radio" name="slide" id="signup">
+               <label for="login" class="slide login">Login</label>
+               <label for="signup" class="slide signup">Signup</label>
+               <div class="slider-tab"></div>
+            </div>
+            <div class="form-inner">
+               <form action="#" class="login">
+                  <div class="field">
+                     <input type="text" id="email" placeholder="Email Address" required>
+                  </div>
+                  <div class="field">
+                     <input type="password"  id="password" placeholder="Password" required>
+                  </div>
+                  <div class="pass-link">
+                     <a href="#">Quên mật khẩu?</a>
+                  </div>
+                  <div class="field btn">
+                     <div class="btn-layer"></div>
+                     <input type="submit" id="sign_in" value="Login">
+                  </div>
+               </form>
+               {{-- Đăng ký form --}}
+               <form action="#" class="signup">
+                <div id="messeger">
+
+                </div>
+                  <div class="field">
+                     <input type="text" id="ho_va_ten" placeholder="Họ Và Tên" required>
+                  </div>
+                  <div class="field">
+                     <input type="text" id="so_dien_thoai" placeholder="Số Điện Thoại" required>
+                  </div>
+                  <div class="field">
+                     <input type="text" id="email_dangki" placeholder="Email" required>
+                  </div>
+                  <div class="field">
+                     <input type="password" id="password_dangki" placeholder="Password" required>
+                  </div>
+                  <div class="field">
+                     <input type="password" id="re_password" placeholder="Confirm Password" required>
+                  </div>
+                  <div class="field">
+                     <input type="text" id="dia_chi" placeholder="Địa Chỉ" required>
+                  </div>
+                  <div>
+                     <input class="form-check-input" id="agree" type="checkbox" value="" />
+                     <label class="form-check-label">
+                        Tôi đồng ý với các <a href="">điều khoản</a>
+                     </label>
+                  </div>
+                  <div class="field btn">
+                     <div class="btn-layer"></div>
+                     <input id="register" type="submit" value="Signup">
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+        @jquery
+        @toastr_js
+        @toastr_render
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script>
+         const loginText = document.querySelector(".title-text .login");
+         const loginForm = document.querySelector("form.login");
+         const loginBtn = document.querySelector("label.login");
+         const signupBtn = document.querySelector("label.signup");
+         const signupLink = document.querySelector("form .signup-link a");
+         signupBtn.onclick = (()=>{
+           loginForm.style.marginLeft = "-50%";
+           loginText.style.marginLeft = "-50%";
+         });
+         loginBtn.onclick = (()=>{
+           loginForm.style.marginLeft = "0%";
+           loginText.style.marginLeft = "0%";
+         });
+         signupLink.onclick = (()=>{
+           signupBtn.click();
+           return false;
+         });
+      </script>
+      <script>
+        $(document).ready(function(e) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $("#sign_in").click(function(e) {
+                e.preventDefault();
+                var email = $("#email").val();
+                var password = $("#password").val();
+                var payload = {
+                    'email'     : email,
+                    'password'  : password,
+                };
+                console.log(payload);
+                $.ajax({
+                    url     :   '/agent/login',
+                    data    :   payload,
+                    type    :   'post',
+                    success :   function(res) {
+                        if(res.status == 2) {
+                            toastr.success('Bạn đã login thành công!');
+                            setTimeout(function(){
+                                $(location).attr('href','http://127.0.0.1:8000');;
+                            }, 2000);
+                        } else if(res.status == 1) {
+                            toastr.warning("Bạn cần phải kích hoạt email");
+                        } else {
+                            toastr.error("Tài khoản hoặc mật khẩu không chính xác");
+                        }
+                    },
+                    error   :   function(res) {
+                        var danh_sach_loi = res.responseJSON.errors;
+                        $.each(danh_sach_loi, function(key, value){
+                            toastr.error(value[0]);
+                        });
+                    }
+                });
+            });
+            //Đăng ký
+            $("#register").click(function(e) {
+                var payload = {
+                    'ho_va_ten'     : $("#ho_va_ten").val(),
+                    'so_dien_thoai' : $("#so_dien_thoai").val(),
+                    'email'         : $("#email_dangki").val(),
+                    'password'      : $("#password_dangki").val(),
+                    're_password'   : $("#re_password").val(),
+                    'dia_chi'       : $("#dia_chi").val(),
+                    'agree'         : $('#agree').get(0).checked,
+                };
+                console.log(payload);
+
+                $.ajax({
+                    url     :   '/agent/register',
+                    type    :   'post',
+                    data    :   payload,
+                    success :   function(res) {
+                        $("#messeger").append('<div class="alert alert-warning " role="alert"> Vui lòng kiểm tra Email để kích hoạt tài khoản</div>');
+                        if(res.status){
+                            console.log(res.status);
+                            toastr.warning("Vui lòng kiểm tra Email để kích hoạt tài khoản!");
+                            setTimeout(function(){
+                                $(location).attr('href','http://127.0.0.1:8000/agent/login');;
+                            }, 2000);
+                        }
+                    },
+
+                    error   :   function(res) {
+                        var danh_sach_loi = res.responseJSON.errors;
+                        $.each(danh_sach_loi, function(key, value){
+                            toastr.error(value[0]);
+                        });
+                    },
+                });
+            });
+        });
+    </script>
+   </body>
 </html>
