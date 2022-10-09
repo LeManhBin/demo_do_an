@@ -119,8 +119,8 @@
                 <!-- Product Thumbnail Tab Content Start -->
                 <div class="tab-content thumb-content border-default">
                     <div id="dtail" class="tab-pane fade show active">
-                        <p>
-                            {{ $sanPham->mo_ta_chi_tiet }}
+                        <p class="motachitiet">
+                            {{-- {{ $sanPham->mo_ta_chi_tiet }} --}}
                         </p>
                     </div>
                     <div id="review" class="tab-pane fade">
@@ -319,5 +319,7 @@
       </div>
     </div>
 </div>
-
+<script>
+    document.querySelector('.motachitiet').innerHTML = "<?php echo $sanPham->mo_ta_chi_tiet?>";
+</script>
 @endsection

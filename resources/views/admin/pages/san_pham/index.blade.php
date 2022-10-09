@@ -30,7 +30,7 @@
 </div>
 <div class="modal fade text-left" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel33" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content" style="height: 600px; overflow-y: auto">
             <div class="modal-header bg-success">
                 <label class="modal-title text-text-bold-600 text-white" id="myModalLabel33"><h3>Chỉnh Sửa Sản Phẩm</h3></label>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -220,7 +220,7 @@
                     <table class="mb-0 table table-bordered" id="tableSanPham">
                         <thead>
                         <tr>
-                            <th class="text-nowrap text-center">#</th>
+                            <th class="text-nowrap text-center">STT</th>
                             <th class="text-nowrap text-center">Tên Sản Phẩm</th>
                             <th class="text-nowrap text-center">Slug Sản Phẩm</th>
                             <th class="text-nowrap text-center">Giá Bán</th>
@@ -250,6 +250,7 @@
         filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
     };
     CKEDITOR.replace('mo_ta_chi_tiet', options);
+    CKEDITOR.replace('mo_ta_chi_tiet_edit', options);
 </script>
 
 <script>
@@ -455,7 +456,7 @@
             var val_anh_dai_dien    = $("#anh_dai_dien_edit").val();
             var val_id_danh_muc     = $("#id_danh_muc_edit").val();
             var val_mo_ta_ngan      = $("#mo_ta_ngan_edit").val();
-            var val_mo_ta_chi_tiet  = $("#mo_ta_chi_tiet_edit").val();
+            var val_mo_ta_chi_tiet  = CKEDITOR.instances['mo_ta_chi_tiet_edit'].getData();
             var val_is_open         = $("#is_open_edit").val();
             var val_id              = $("#id_edit").val();
 

@@ -29,7 +29,7 @@
                     <table class="table table-bordered mb-0 mt-1">
                         <thead>
                             <tr class="text-center">
-                                <th class="text-center">#</th>
+                                <th class="text-center">STT</th>
                                 <th class="text-center">Tên Sản Phẩm</th>
                                 <th class="text-center">Action</th>
                             </tr>
@@ -69,7 +69,7 @@
                     <table class="table table-bordered mb-0">
                         <thead>
                             <tr class="text-center">
-                                <th class="text-center">#</th>
+                                <th class="text-center">STT</th>
                                 <th class="text-center">Tên Sản Phẩm</th>
                                 <th class="text-center">Số Lượng</th>
                                 <th class="text-center">Đơn Giá</th>

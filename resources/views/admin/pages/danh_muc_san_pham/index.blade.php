@@ -54,7 +54,7 @@
                 <table class="mb-0 table table-bordered" id="tableDanhMuc">
                     <thead>
                         <tr>
-                            <th class="text-center">#</th>
+                            <th class="text-center">STT</th>
                             <th class="text-center">Tên Danh Mục</th>
                             <th class="text-center">Danh Mục Cha</th>
                             <th class="text-center">Tình Trạng</th>

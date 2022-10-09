@@ -32,7 +32,7 @@
                 <table class="mb-0 table table-bordered" id="tableDonHang">
                     <thead>
                     <tr>
-                        <th class="text-nowrap text-center">#</th>
+                        <th class="text-nowrap text-center">STT</th>
                         <th class="text-nowrap text-center">Mã đơn hàng</th>
                         <th class="text-nowrap text-center">Tổng tiền</th>
                         <th class="text-nowrap text-center">Khuyến mãi</th>

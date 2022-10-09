@@ -32,7 +32,7 @@
                 <table class="mb-0 table table-bordered" id="tableTaiKhoan">
                     <thead>
                     <tr>
-                        <th class="text-nowrap text-center">#</th>
+                        <th class="text-nowrap text-center">STT</th>
                         <th class="text-nowrap text-center">Họ và tên</th>
                         <th class="text-nowrap text-center">Số điện thoại</th>
                         <th class="text-nowrap text-center">Email</th>
@@ -49,8 +49,6 @@
 </div>
 @endsection
 @section('js')
-{{-- <script src="https://cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script>
-<script src="/vendor/laravel-filemanager/js/lfm.js"></script> --}}
 <script>
     $(document).ready(function(){
         $.ajaxSetup({
