@@ -147,7 +147,7 @@
                      <input type="password"  id="password" placeholder="Password" required>
                   </div>
                   <div class="pass-link">
-                     <a href="#">Quên mật khẩu?</a>
+                     <a href="/test">Quên mật khẩu?</a>
                   </div>
                   <div class="field btn">
                      <div class="btn-layer"></div>

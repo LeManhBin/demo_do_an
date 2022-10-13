@@ -6,16 +6,18 @@
        </div>
        <!-- Product Title End -->
         <!-- Hot Deal Product Activation Start -->
+
+
+
         <div class="hot-deal-active owl-carousel">
             @foreach ($allSanPham as $key => $value)
-            <div class="single-product">
+            <div class="single-product" style="height: 350px">
                 <!-- Product Image Start -->
                 <div class="pro-img" class="h-100">
                     <a href="/san-pham/{{$value->slug_san_pham}}-post{{ $value->id }}">
                         <img class="primary-img" src="{{ $value->anh_dai_dien }} " class="h-75">
                         <img class="secondary-img" src="{{ $value->anh_dai_dien }}" class="h-75">
                     </a>
-                    <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="Quick View"><i class="lnr lnr-magnifier"></i></a>
                 </div>
                 <!-- Product Image End -->
                 <!-- Product Content Start -->
@@ -48,6 +50,7 @@
             </div>
             @endforeach
         </div>
+
         <!-- Hot Deal Product Active End -->
 
     </div>

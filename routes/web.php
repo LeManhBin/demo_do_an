@@ -32,7 +32,6 @@ Route::get('/yeuthich/data', [\App\Http\Controllers\YeuThichController::class, '
 Route::post('/add-yeu-thich-update', [\App\Http\Controllers\YeuThichController::class, 'addToLikeUpdate']);
 Route::post('/remove-yeuthich', [\App\Http\Controllers\YeuThichController::class, 'removeYeuThich']);
 Route::post('/add-to-like', [\App\Http\Controllers\YeuThichController::class, 'addToLike']);
-Route::get('/test', [\App\Http\Controllers\TestController::class, 'test']);
 
 //danh mục sản phẩm
 Route::group(['prefix' => '/admin'], function() {
@@ -120,3 +119,8 @@ Route::get('/danh-sach-don-hang', [\App\Http\Controllers\QuanLiDonHangController
 Route::get('/xoa-don-hang/{id}', [\App\Http\Controllers\QuanLiDonHangController::class, 'deleteDonHang']);
 
 });
+//Forgot password
+
+//test
+Route::get('/test', [\App\Http\Controllers\TestController::class, 'test']);
+Route::get('/test-phan-hoi', [\App\Http\Controllers\TestController::class, 'testphanhoi']);

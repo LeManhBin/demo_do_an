@@ -122,6 +122,7 @@
                         <p class="motachitiet">
                             {{-- {{ $sanPham->mo_ta_chi_tiet }} --}}
                         </p>
+
                     </div>
                     <div id="review" class="tab-pane fade">
                         <!-- Reviews Start -->

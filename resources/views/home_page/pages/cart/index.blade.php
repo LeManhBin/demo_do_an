@@ -27,7 +27,7 @@
                                         </td>
                                         <td class="product-name"><a href="#">@{{ value.ten_san_pham }}</a></td>
                                         <td class="product-price"><span class="amount">@{{ formatNumber(value.don_gia) }}</span></td>
-                                        <td class="product-quantity"><input v-on:change="updateRow(value)" v-model="value.so_luong" type="number"/></td>
+                                        <td class="product-quantity"><input v-on:change="updateRow(value)" v-model="value.so_luong" type="number" min="1"/></td>
                                         <td class="product-subtotal">@{{ formatNumber(value.don_gia * value.so_luong) }}</td>
                                         <td class="product-remove"> <a><i v-on:click="deleteRow(value)" class="fa fa-times" aria-hidden="true"></i></a></td>
                                     </tr>
@@ -138,6 +138,7 @@
                             }else{
                                 toastr.warning("Chưa có sản phẩm nào!");
                             }
+                            this.loadCart();
                         });
                 },
             },

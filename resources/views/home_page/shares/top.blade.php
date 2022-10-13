@@ -21,7 +21,7 @@
 
                         <!-- Dropdown End -->
                     </li>
-                    {{-- <li>Quản trị viên<i class="lnr lnr-chevron-down"></i>
+                    <li>Quản trị viên<i class="lnr lnr-chevron-down"></i>
                         <!-- Dropdown Start -->
 
                             <ul class="ht-dropdown">
@@ -29,7 +29,7 @@
                             </ul>
 
                         <!-- Dropdown End -->
-                    </li> --}}
+                    </li>
                 </ul>
             </div>
             <!-- Header Top End -->
@@ -112,12 +112,12 @@
                 <div class="col-xl-9 col-lg-8 col-md-12 ">
                     <nav class="d-none d-lg-block">
                         <ul class="header-bottom-list d-flex">
-                            <li class="active"><a href="/"> <img src="/images/home.png" width="25" height="25" alt=""> Home</a>
+                            <li class="active" style="white-space: nowrap;"><a href="/"> <img src="/images/home.png" width="25" height="25" alt=""> Home</a>
                             </li>
                             @foreach ($menuCha as $value_cha)
-                            <li>
+                            <li style="white-space: nowrap; text-align: center;">
                                 <a href="/danh-muc/{{$value_cha->slug_danh_muc}}-post{{ $value_cha->id }}"><img src="{{$value_cha->hinh_anh}}" alt="" width="25" height="25" style="">{{ $value_cha->ten_danh_muc }} <i class="fa fa-angle-down"></i></a>
-                                <ul class="ht-dropdown">
+                                <ul class="ht-dropdown" style="white-space: nowrap; display: flex; flex-direction: column; align-items: flex-start;">
                                     @foreach ($menuCon as $value_con)
                                         @if($value_con->id_danh_muc_cha == $value_cha->id)
                                             <li><a href="/danh-muc/{{ $value_con->id }}"><img src="{{$value_con->hinh_anh}}" alt="" width="20" height="20" style="">&nbsp;{{ $value_con->ten_danh_muc }}</a></li>
