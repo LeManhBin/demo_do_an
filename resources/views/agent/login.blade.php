@@ -244,6 +244,12 @@
                             }, 2000);
                         } else if(res.status == 1) {
                             toastr.warning("Bạn cần phải kích hoạt email");
+                        // }else if(res.status == 3) {
+                        //     toastr.success('Admin đã login thành công!');
+                        //     setTimeout(function(){
+                        //         $(location).attr('href','http://127.0.0.1:8000/admin/danh-muc-san-pham/index/');;
+                        //     }, 2000);
+                        // }
                         } else {
                             toastr.error("Tài khoản hoặc mật khẩu không chính xác");
                         }
