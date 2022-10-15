@@ -43,7 +43,7 @@
                         </div>
                     </div>
                 </div>
-                @if($key > 7)
+                @if($key > 18)
                     @break
                 @endif
                 <!-- Product Content End -->
