@@ -2,7 +2,7 @@
     <div class="container">
        <!-- Product Title Start -->
        <div class="post-title pb-30">
-           <h2>Bán chạy nhất</h2>
+           <h2>Sản Phẩm nổi bật</h2>
        </div>
        <!-- Product Title End -->
         <!-- Hot Deal Product Activation Start -->
