@@ -33,4 +33,15 @@ class QuanLiDonHangController extends Controller
             return response()->json(['status' => true]);
         }
     }
+    public function chiTietDonHang($id)
+    {
+        $data = ChiTietDonHang::join('agents', 'chi_tiet_don_hangs.agent_id', '=', 'agents.id')
+            ->where('chi_tiet_don_hangs.don_hang_id', $id)
+            ->select('chi_tiet_don_hangs.*', 'agents.ho_va_ten', 'agents.dia_chi', 'agents.so_dien_thoai')
+            ->get();
+        return response()->json([
+            'dulieuchitietdonhang' => $data
+        ]);
+        dd($data);
+    }
 }

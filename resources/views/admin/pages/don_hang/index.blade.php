@@ -38,89 +38,6 @@
                 </div>
 
                 <form action="#">
-                    {{-- <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <fieldset class="form-group">
-                                            <label>Tên Sản Phẩm</label>
-                                            <input type="text" class="form-control" id="ten_san_pham_edit"
-                                                placeholder="Nhập vào tên sản phẩm">
-                                            <input type="number" class="form-control" id="id_edit">
-                                        </fieldset>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <fieldset class="form-group">
-                                            <label>Slug Sản Phẩm</label>
-                                            <input type="text" class="form-control" id="slug_san_pham_edit"
-                                                placeholder="Nhập vào slug sản phẩm">
-                                        </fieldset>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <fieldset class="form-group">
-                                            <label>Giá Bán</label>
-                                            <input type="number" class="form-control" id="gia_ban_edit"
-                                                placeholder="Nhập vào giá bán">
-                                        </fieldset>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <fieldset class="form-group">
-                                            <label>Giá Khuyến Mãi</label>
-                                            <input type="number" class="form-control" id="gia_khuyen_mai_edit"
-                                                placeholder="Nhập vào giá khuyến mãi">
-                                        </fieldset>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <fieldset class="form-group">
-                                            <label>Ảnh Đại Diện</label>
-                                            <div class="input-group">
-                                                <input id="anh_dai_dien_edit" name="anh_dai_dien" class="form-control"
-                                                    type="text">
-                                                <input type="button" class="btn-info lfm" data-input="anh_dai_dien_edit"
-                                                    data-preview="holder_edit" value="Upload">
-                                            </div>
-                                            <img id="holder_edit" style="margin-top:15px;max-height:100px;">
-                                        </fieldset>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <fieldset class="form-group">
-                                            <label for="placeTextarea">Mô Tả Ngắn</label>
-                                            <textarea class="form-control" id="mo_ta_ngan_edit" cols="30" rows="5"
-                                                placeholder="Nhập vào mô tả ngắn"></textarea>
-                                        </fieldset>
-                                    </div>
-                                </div>
-                                <div class="position-relative form-group">
-                                    <label>Mô Tả Chi Tiết</label>
-                                    <input name="mo_ta_chi_tiet_edit" id="mo_ta_chi_tiet_edit"
-                                        placeholder="Nhập vào mô tả chi tiết" type="text" class="form-control">
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-
-                                    </div>
-                                    <div class="col-md-6">
-                                        <fieldset class="form-group">
-                                            <label>Trạng thái</label>
-                                            <select id="is_open_edit" class="custom-select block">
-                                                <option value=1>Hiển Thị</option>
-                                                <option value=0>Tạm tắt</option>
-                                            </select>
-                                        </fieldset>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
                     <table class="mb-0 table table-bordered" id="tableChiTiet">
                         <thead>
                             <tr>
@@ -188,9 +105,6 @@
                     type: 'get',
                     success: function(res) {
                         var html = '';
-
-
-
                         $.each(res.dulieudonhang, function(key, value) {
                             html += '<tr>';
                             html += '<th scope="row">' + (key + 1) + '</th>';
@@ -204,8 +118,8 @@
                                 '<button type="button" class="btn btn-warning">Đang giao</button>'
                             html += '</td>';
                             html += '<td>';
-                            html += '<button class="btn btn-primary  mr-1" data-id="' + value
-                                .id +
+                            html += '<button class="btn btn-primary nutView mr-1" data-id="' +
+                                value.id +
                                 '" data-toggle="modal" data-target="#viewModal"> View </button>';
                             html += '<button class="btn btn-danger nutDelete mr-1" data-id="' +
                                 value.id +
@@ -245,6 +159,33 @@
                 var id_can_xoa = $("#idCanXoa").val();
                 xoadonhang(id_can_xoa);
                 toastr.success('Xoá đơn hàng thành công thành công!');
+            });
+
+
+            $('body').on('click', '.nutView', function() {
+                var id_don_hang = $(this).data('id');
+                // console.log(id_don_hang);
+                $.ajax({
+                    url: '/don-hang/chi-tiet-don-hang/' + id_don_hang,
+                    type: 'get',
+                    success: function(res) {
+                        var html = '';
+                        $.each(res.dulieuchitietdonhang, function(key, value) {
+                            html += '<tr>';
+                            html += '<th scope="row">' + (key + 1) + '</th>';
+                            html += '<td>' + value.ten_san_pham + '</td>';
+                            html += '<td>' + value.so_luong + '</td>';
+                            html += '<td>' + value.don_gia + '</td>';
+                            html += '<td>' + value.thanh_tien + '</td>';
+                            html += '<td>' + value.ho_va_ten + '</td>';
+                            html += '<td>' + value.dia_chi + '</td>';
+                            html += '<td>' + value.so_dien_thoai + '</td>';
+                            html += '</tr>';
+
+                        });
+                        $("#tableChiTiet tbody").html(html);
+                    }
+                });
             });
         });
     </script>
