@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DonHang;
+use App\Models\ChiTietDonHang;
 use Illuminate\Http\Request;
 
 class QuanLiDonHangController extends Controller
@@ -16,19 +17,20 @@ class QuanLiDonHangController extends Controller
     {
         return view('admin.pages.don_hang.index');
     }
-    public function ListDonHang(){
+    public function ListDonHang()
+    {
         $data =  DonHang::all();
         return response()->json([
             'dulieudonhang' => $data
         ]);
     }
-    public function deleteDonHang($id){
+    public function deleteDonHang($id)
+    {
         $don_hang = DonHang::find($id);
-        if($don_hang) {
+        if ($don_hang) {
             $don_hang->delete();
 
             return response()->json(['status' => true]);
         }
     }
-
 }

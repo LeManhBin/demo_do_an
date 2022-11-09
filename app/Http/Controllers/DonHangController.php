@@ -9,6 +9,7 @@ use App\Models\SanPham;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+
 class DonHangController extends Controller
 {
     /**
@@ -40,11 +41,11 @@ class DonHangController extends Controller
     public function store()
     {
         $agent = Auth::guard('agent')->user();
-        if($agent){
+        if ($agent) {
             $gioHang = ChiTietDonHang::where('is_cart', 1)
-                                    ->where('agent_id', $agent->id)
-                                    ->get();
-            if(empty($gioHang) || count($gioHang) > 0){
+                ->where('agent_id', $agent->id)
+                ->get();
+            if (empty($gioHang) || count($gioHang) > 0) {
                 $donHang = DonHang::create([
                     'ma_don_hang'       => Str::uuid(),
                     'tong_tien'         => 0,
@@ -53,11 +54,12 @@ class DonHangController extends Controller
                     'agent_id'          => $agent->id,
                     'loai_thanh_toan'   => 1,
                 ]);
-                $thuc_tra = 0; $tong_tien = 0;
+                $thuc_tra = 0;
+                $tong_tien = 0;
 
-                foreach($gioHang as $key => $value){
+                foreach ($gioHang as $key => $value) {
                     $sanPham = SanPham::find($value->san_pham_id);
-                    if($sanPham){
+                    if ($sanPham) {
                         $giaBan    = $sanPham->gia_khuyen_mai ? $sanPham->gia_khuyen_mai : $sanPham->gia_ban;
                         $thuc_tra += $value->so_luong * $giaBan;
                         $tong_tien += $value->so_luong * $sanPham->gia_ban;
@@ -67,7 +69,7 @@ class DonHangController extends Controller
                         $value->is_cart = 0;
                         $value->don_hang_id = $donHang->id;
                         $value->save();
-                    }else{
+                    } else {
                         $value->delete();
                     }
                 }
@@ -78,13 +80,11 @@ class DonHangController extends Controller
                 $donHang->save();
 
                 return response()->json(['status' => true]);
-            }else{
+            } else {
                 return response()->json(['status' => 2]);
             }
-
-            }
-            return response()->json(['status' => false]);
-
+        }
+        return response()->json(['status' => false]);
     }
 
     /**
