@@ -26,8 +26,8 @@
     {{-- view chi tiet don hang --}}
     <div class="modal fade text-left" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel33"
         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content" style="width:1000px; height: 600px; overflow-y: auto; margin-right: 300px;">
+        <div class="modal-dialog" role="document" style="margin-right: 750px">
+            <div class="modal-content" style="width:1000px; height: 600px; overflow-y: auto; margin-right: 300px; ">
                 <div class="modal-header bg-success">
                     <label class="modal-title text-text-bold-600 text-white" id="myModalLabel33">
                         <h3>Chi tiết đơn hàng</h3>

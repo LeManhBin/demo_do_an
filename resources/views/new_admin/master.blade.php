@@ -20,11 +20,19 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- END: Head-->
 
 <!-- BEGIN: Body-->
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Roboto:wght@100&display=swap');
 
-<body class="vertical-layout vertical-menu 2-columns   fixed-navbar" data-open="click" data-menu="vertical-menu" data-col="2-columns">
+    * {
+        font-family: 'Poppins', sans-serif;
+    }
+</style>
+
+<body class="vertical-layout vertical-menu 2-columns   fixed-navbar" data-open="click" data-menu="vertical-menu"
+    data-col="2-columns">
 
     <!-- BEGIN: Header-->
-        @include('new_admin.Shares.top')
+    @include('new_admin.Shares.top')
     <!-- END: Header-->
 
 
@@ -73,4 +81,3 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- END: Body-->
 
 </html>
-

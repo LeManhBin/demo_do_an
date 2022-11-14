@@ -98,12 +98,12 @@
                                     @if (Auth::guard('agent')->check())
                                         <div class="actions-secondary">
                                             <a class="add" data-id="{{ $sanPham->id }}"><i class="lnr lnr-heart"></i>
-                                                <span>Thêm vào danh sách yêu thích</span></a>
+                                                <span>Yêu thích</span></a>
                                         </div>
                                     @else
                                         <div class="actions-secondary">
                                             <a href="wishlist.html" title="" data-original-title=""><i
-                                                    class="lnr lnr-heart"></i> <span>Thêm vào danh sách yêu thích</span></a>
+                                                    class="lnr lnr-heart"></i> <span>Yêu thích</span></a>
                                         </div>
                                     @endif
 
@@ -124,8 +124,8 @@
             <div class="row">
                 <div class="col-sm-12">
                     <ul class="main-thumb-desc nav tabs-area" role="tablist">
-                        <li><a class="active" data-toggle="tab" href="#dtail">Product Details</a></li>
-                        <li><a data-toggle="tab" href="#review">Reviews 1</a></li>
+                        <li><a class="active" data-toggle="tab" href="#dtail">Chi tiết sản phẩm</a></li>
+                        <li><a data-toggle="tab" href="#review">Đánh giá</a></li>
                     </ul>
                     <!-- Product Thumbnail Tab Content Start -->
                     <div class="tab-content thumb-content border-default">
@@ -253,14 +253,14 @@
         <div class="container">
             <!-- Product Title Start -->
             <div class="post-title pb-30">
-                <h2>Sản Phẩm Tương Tự</h2>
+                <h2 style="background-color: #FD841F !important">Sản Phẩm Tương Tự</h2>
             </div>
             <!-- Product Title End -->
             <!-- Hot Deal Product Activation Start -->
             <div class="hot-deal-active owl-carousel">
                 <!-- Single Product Start -->
                 @foreach ($allSanPham as $key => $value)
-                    <div class="single-product">
+                    <div class="single-product" style="border-radius: 10px; ">
                         <!-- Product Image Start -->
                         <div class="pro-img">
                             <a href="/san-pham/{{ $value->slug_san_pham }}-post{{ $value->id }}">
@@ -292,13 +292,13 @@
                                 @endif
                                 @if (Auth::guard('agent')->check())
                                     <div class="actions-secondary">
-                                        <a class="addToLike" data-id="{{ $value->id }}"><i class="lnr lnr-heart"></i>
-                                            <span>Thêm vào danh sách yêu thích</span></a>
+                                        <a class="add" data-id="{{ $value->id }}"><i class="lnr lnr-heart"></i>
+                                            <span>Yêu thích</span></a>
                                     </div>
                                 @else
                                     <div class="actions-secondary">
                                         <a href="wishlist.html" title="" data-original-title=""><i
-                                                class="lnr lnr-heart"></i> <span>Thêm vào danh sách yêu thích</span></a>
+                                                class="lnr lnr-heart"></i> <span>Yêu thích</span></a>
                                     </div>
                                 @endif
                             </div>

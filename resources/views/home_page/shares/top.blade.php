@@ -8,7 +8,7 @@
                 <ul>
                     <li style="height: 40px">Tài Khoản Của Tôi<i class="lnr lnr-chevron-down"></i>
                         <!-- Dropdown Start -->
-                        @if ( Auth::guard('agent')->check())
+                        @if (Auth::guard('agent')->check())
                             <ul class="ht-dropdown">
                                 <li><a href="/agent/logout">Đăng xuất</a></li>
                             </ul>
@@ -24,9 +24,9 @@
                     <li>Quản trị viên<i class="lnr lnr-chevron-down"></i>
                         <!-- Dropdown Start -->
 
-                            <ul class="ht-dropdown">
-                                <li><a href="/admin/login">Đăng nhập</a></li>
-                            </ul>
+                        <ul class="ht-dropdown">
+                            <li><a href="/admin/login">Đăng nhập</a></li>
+                        </ul>
 
                         <!-- Dropdown End -->
                     </li>
@@ -40,57 +40,64 @@
     <!-- Header Middle Start Here -->
     <div class="header-middle ptb-15">
         <div class="container">
-            <div class="row align-items-center no-gutters">
-                <div class="col-lg-3 col-md-12">
+            <div class="row align-items-center no-gutters" style="display: flex; align-items: center">
+                <div class="col-lg-2 col-md-12">
                     <div class="logo mb-all-30">
                         <a href="/"><img src="/images/logo-btech.png" alt="logo-image" height="150px"></a>
                     </div>
                 </div>
                 <!-- Categorie Search Box Start Here -->
-                <div class="col-lg-5 col-md-8 ml-auto mr-auto col-10">
+                <div class="col-lg-4 col-md-8 ml-auto mr-auto col-10">
                     <div class="categorie-search-box">
                         <form action="/admin/san-pham/search" method="post">
                             @csrf
 
-                            <input type="text" name="search" placeholder="Bạn cần tìm...">
-                            <button type="submit"><i class="lnr lnr-magnifier"></i></button>
+                            <input type="text" name="search" placeholder="Nhập tên sản phẩm cần tìm...">
+                            <button type="submit" style="background-color: #FD841F"><i
+                                    class="fa-solid fa-magnifying-glass"></i></button>
                         </form>
                     </div>
                 </div>
                 <!-- Categorie Search Box End Here -->
                 <!-- Cart Box Start Here -->
-                <div class="col-lg-4 col-md-12">
+                <div class="col-lg-6 col-md-12">
                     <div class="cart-box mt-all-30">
                         <ul class="d-flex justify-content-lg-end justify-content-center align-items-center">
-                            <li>
-                                <a href="/cart"><i class="lnr lnr-cart"></i>
-                                <span class="my-cart"><span class="total-pro"></span><span>Giỏ hàng</span></span></a>
-                                <ul class="ht-dropdown cart-box-width" id="cartTop">
+                            <style>
+                                li a:hover,
+                                span:hover {
+                                    color: #FD841F !important
+                                }
 
-                                </ul>
+                                .addToCart:hover {
+                                    background-color: #FD841F !important;
+                                }
+                            </style>
+                            <li>
+                                <a href="/cart"><i class="fa-solid fa-cart-shopping"></i>
+                                    <span class="my-cart"><span class="total-pro"></span><span>Giỏ
+                                            hàng</span></span></a>
                             </li>
-                            <li><a href="/yeuthich"><i class="lnr lnr-heart"></i>
-                                <span class="my-cart"><span class="total-pro"></span><span>Yêu thích</span></span></a>
+                            <li><a href="/yeuthich"><i class="fa-solid fa-heart"></i>
+                                    <span class="my-cart"><span class="total-pro"></span><span>Yêu
+                                            thích</span></span></a>
                             </li>
                             @if (Auth::guard('agent')->check())
-                                <li><a href="#"><i class="lnr lnr-user"></i>
+                                <li><a href="#"><i class="fa-sharp fa-solid fa-circle-user"></i>
                                         <span class="my-cart">
                                             <span>
                                                 <strong>{{ Auth::guard('agent')->user()->ho_va_ten }}</strong>
                                             </span>
                                         </span>
-                                        <ul class="ht-dropdown">
-                                            <li><a href="/agent/logout" style="color: black">Đăng xuất</a></li>
-                                        </ul>
+
                                     </a>
                                 </li>
                             @else
                                 <li>
-                                    <a href="/agent/login"><i class="lnr lnr-user"></i>
-                                    <span class="my-cart"><span class="total-pro"></span><span>Sign in</span></span>
+                                    <a href="/agent/login"><i class="fa-sharp fa-solid fa-circle-user"></i>
+                                        <span class="my-cart"><span class="total-pro"></span><span>Sign in</span></span>
                                     </a>
                                 </li>
-
                             @endif
                         </ul>
                     </div>
@@ -104,27 +111,35 @@
     <!-- Header Middle End Here -->
     <!-- Header Bottom Start Here -->
     <div class="header-bottom  header-sticky">
-        <div class="container">
+        <div class="container" style="display: flex; justify-content: center">
             <div class="row align-items-center">
-                 {{-- <div class="col-xl-3 col-lg-4 col-md-6 vertical-menu d-none d-lg-block">
+                {{-- <div class="col-xl-3 col-lg-4 col-md-6 vertical-menu d-none d-lg-block">
                     <span class="categorie-title">Shop by Categories </span>
                 </div> --}}
                 <div class="col-xl-9 col-lg-8 col-md-12 ">
                     <nav class="d-none d-lg-block">
                         <ul class="header-bottom-list d-flex">
-                            <li class="active" style="white-space: nowrap;"><a href="/"> <img src="/images/home.png" width="25" height="25" alt=""> Home</a>
+                            <li class="active" style="white-space: nowrap;"><a href="/"> <img
+                                        src="/images/home.png" width="25" height="25" alt=""> Home</a>
                             </li>
                             @foreach ($menuCha as $value_cha)
-                            <li style="white-space: nowrap; text-align: center;">
-                                <a href="/danh-muc/{{$value_cha->slug_danh_muc}}-post{{ $value_cha->id }}"><img src="{{$value_cha->hinh_anh}}" alt="" width="25" height="25" style="">{{ $value_cha->ten_danh_muc }} <i class="fa fa-angle-down"></i></a>
-                                <ul class="ht-dropdown" style="white-space: nowrap; display: flex; flex-direction: column; align-items: flex-start;">
-                                    @foreach ($menuCon as $value_con)
-                                        @if($value_con->id_danh_muc_cha == $value_cha->id)
-                                            <li><a href="/danh-muc/{{ $value_con->id }}"><img src="{{$value_con->hinh_anh}}" alt="" width="20" height="20" style="">&nbsp;{{ $value_con->ten_danh_muc }}</a></li>
-                                        @endif
-                                    @endforeach
-                                </ul>
-                            </li>
+                                <li style="white-space: nowrap; text-align: center;">
+                                    <a href="/danh-muc/{{ $value_cha->slug_danh_muc }}-post{{ $value_cha->id }}"><img
+                                            src="{{ $value_cha->hinh_anh }}" alt="" width="25"
+                                            height="25" style="">{{ $value_cha->ten_danh_muc }} <i
+                                            class="fa fa-angle-down"></i></a>
+                                    <ul class="ht-dropdown"
+                                        style="white-space: nowrap; display: flex; flex-direction: column; align-items: flex-start;">
+                                        @foreach ($menuCon as $value_con)
+                                            @if ($value_con->id_danh_muc_cha == $value_cha->id)
+                                                <li><a href="/danh-muc/{{ $value_con->id }}"><img
+                                                            src="{{ $value_con->hinh_anh }}" alt=""
+                                                            width="20" height="20"
+                                                            style="">&nbsp;{{ $value_con->ten_danh_muc }}</a></li>
+                                            @endif
+                                        @endforeach
+                                    </ul>
+                                </li>
                             @endforeach
 
 
