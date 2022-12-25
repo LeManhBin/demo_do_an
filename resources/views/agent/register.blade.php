@@ -74,21 +74,22 @@
                                             </div>
                                         </div>
                                         <div class="d-flex flex-row align-items-center mb-2">
-                                            <input class="form-check-input" id="agree" type="checkbox" value="" />
+                                            <input class="form-check-input" id="agree" type="checkbox"
+                                                value="" />
                                             <label class="form-check-label">
-                                               Tôi đồng ý với các <a href="">điều khoản</a>
+                                                Tôi đồng ý với các <a href="">điều khoản</a>
                                             </label>
                                         </div>
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                            <button id="register" type="button"
-                                                class="btn btn-primary btn-lg">Đăng kí</button>
+                                            <button id="register" type="button" class="btn btn-primary btn-lg">Đăng
+                                                kí</button>
                                         </div>
                                     </form>
 
                                 </div>
                                 <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-                                    <img src="/images/dangki.png" style="width:450px; height:650px ;"
-                                        class="img-fluid" alt="Sample image">
+                                    <img src="/images/dangki.png" style="width:450px; height:650px ;" class="img-fluid"
+                                        alt="Sample image">
                                 </div>
                             </div>
                         </div>
@@ -113,34 +114,37 @@
 
             $("#register").click(function(e) {
                 var payload = {
-                    'ho_va_ten'     : $("#ho_va_ten").val(),
-                    'so_dien_thoai' : $("#so_dien_thoai").val(),
-                    'email'         : $("#email").val(),
-                    'password'      : $("#password").val(),
-                    're_password'   : $("#re_password").val(),
-                    'dia_chi'       : $("#dia_chi").val(),
-                    'agree'         : $('#agree').get(0).checked,
+                    'ho_va_ten': $("#ho_va_ten").val(),
+                    'so_dien_thoai': $("#so_dien_thoai").val(),
+                    'email': $("#email").val(),
+                    'password': $("#password").val(),
+                    're_password': $("#re_password").val(),
+                    'dia_chi': $("#dia_chi").val(),
+                    'agree': $('#agree').get(0).checked,
                 };
 
                 console.log(payload);
 
                 $.ajax({
-                    url     :   '/agent/register',
-                    type    :   'post',
-                    data    :   payload,
-                    success :   function(res) {
-                        $("#messeger").append('<div class="alert alert-warning " role="alert"> Vui lòng kiểm tra Email để kích hoạt tài khoản</div>');
-                        if(res.status){
+                    url: '/agent/register',
+                    type: 'post',
+                    data: payload,
+                    success: function(res) {
+                        $("#messeger").append(
+                            '<div class="alert alert-warning " role="alert"> Vui lòng kiểm tra Email để kích hoạt tài khoản</div>'
+                            );
+                        if (res.status) {
                             console.log(res.status);
                             toastr.warning("Vui lòng kiểm tra Email để kích hoạt tài khoản!");
-                            setTimeout(function(){
-                                $(location).attr('href','http://127.0.0.1:8000/agent/login');;
+                            setTimeout(function() {
+                                $(location).attr('href',
+                                    'http://127.0.0.1:8001/agent/login');;
                             }, 2000);
                         }
                     },
-                    error   :   function(res) {
+                    error: function(res) {
                         var danh_sach_loi = res.responseJSON.errors;
-                        $.each(danh_sach_loi, function(key, value){
+                        $.each(danh_sach_loi, function(key, value) {
                             toastr.error(value[0]);
                         });
                     },

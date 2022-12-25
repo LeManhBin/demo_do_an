@@ -95,7 +95,8 @@
                             @else
                                 <li>
                                     <a href="/agent/login"><i class="fa-sharp fa-solid fa-circle-user"></i>
-                                        <span class="my-cart"><span class="total-pro"></span><span>Sign in</span></span>
+                                        <span class="my-cart"><span class="total-pro"></span><span>Đăng
+                                                Nhập</span></span>
                                     </a>
                                 </li>
                             @endif

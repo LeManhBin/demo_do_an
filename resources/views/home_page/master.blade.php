@@ -34,6 +34,25 @@
     .banner-moi-img img {
         width: 70%;
     }
+
+    .title-new {
+        text-align: center;
+        margin-bottom: 50px
+    }
+
+    .title-new h1 {
+        font-weight: 600;
+    }
+
+    .title-new i {
+        color: #DF841F
+    }
+
+    .newproduct-list {
+        margin-left: 300px;
+        text-align: center;
+        margin-bottom: 50px;
+    }
 </style>
 
 <body>
@@ -206,7 +225,7 @@
                         if (res.status == 2) {
                             toastr.success('Bạn đã login thành công!');
                             setTimeout(function() {
-                                $(location).attr('href', 'http://127.0.0.1:8000');;
+                                $(location).attr('href', 'http://127.0.0.1:8001');;
                             }, 2000);
                         } else if (res.status == 1) {
                             toastr.warning("Bạn cần phải kích hoạt email");

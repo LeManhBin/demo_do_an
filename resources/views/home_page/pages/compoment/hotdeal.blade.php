@@ -1,22 +1,22 @@
 <div class="hot-deal-products off-white-bg pb-90 pb-sm-50">
     <div class="banner-moi">
         <div class="banner-moi-img">
-            <img src="https://cdn-dgcei.nitrocdn.com/QaFavQVnaqgHtiSsAelwGDKVguOuACXM/assets/static/optimized/rev-8396c51/wp-content/uploads/2022/11/danh-muc1-T11-01.png"
+            <img src="https://cdn-dgcei.nitrocdn.com/QaFavQVnaqgHtiSsAelwGDKVguOuACXM/assets/static/optimized/rev-af23092/wp-content/uploads/2022/11/danh-muc1-T11-01.png"
                 alt="">
         </div>
         <div class="banner-moi-img">
-            <img src="https://cdn-dgcei.nitrocdn.com/QaFavQVnaqgHtiSsAelwGDKVguOuACXM/assets/static/optimized/rev-8396c51/wp-content/uploads/2022/06/AirPods-MB.jpg"
+            <img src="https://cdn-dgcei.nitrocdn.com/QaFavQVnaqgHtiSsAelwGDKVguOuACXM/assets/static/optimized/rev-af23092/wp-content/uploads/2022/06/AirPods-MB.jpg"
                 alt="">
         </div>
         <div class="banner-moi-img">
-            <img src="https://cdn-dgcei.nitrocdn.com/QaFavQVnaqgHtiSsAelwGDKVguOuACXM/assets/static/optimized/rev-8396c51/wp-content/uploads/2022/06/Care-MB.jpg"
+            <img src="https://cdn-dgcei.nitrocdn.com/QaFavQVnaqgHtiSsAelwGDKVguOuACXM/assets/static/optimized/rev-af23092/wp-content/uploads/2022/06/Care-MB.jpg"
                 alt="">
         </div>
     </div>
     <div class="container">
         <!-- Product Title Start -->
-        <div class="post-title pb-30">
-            <h2 style="background-color: #FD841F !important">Sản Phẩm nổi bật</h2>
+        <div class="title-new">
+            <h1><i class="fa-solid fa-bolt"></i> Sản Phẩm nổi bật</h1>
         </div>
         <!-- Product Title End -->
         <!-- Hot Deal Product Activation Start -->

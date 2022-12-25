@@ -4,17 +4,26 @@
     <!-- main menu content-->
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class=" nav-item"><a href="/admin/danh-muc-san-pham/index"><i class="feather icon-folder"></i><span class="menu-title" data-i18n="">Quản Lý Danh Mục</span></a>
+            <li class=" nav-item"><a href="/admin/quan-li-thong-ke/index"><i class="feather icon-folder"></i><span
+                        class="menu-title" data-i18n="">Quản Lý Thống Kê</span></a>
             </li>
-            <li class=" nav-item"><a href="/admin/san-pham/index" ><i class="feather icon-folder"></i><span class="menu-title" data-i18n="">Quản Lý Sản Phẩm</span></a>
+            <li class=" nav-item"><a href="/admin/danh-muc-san-pham/index"><i class="feather icon-folder"></i><span
+                        class="menu-title" data-i18n="">Quản Lý Danh Mục</span></a>
             </li>
-            <li class=" nav-item"><a href="/admin/nhap-kho/index" ><i class="feather icon-folder"></i><span class="menu-title" data-i18n="">Quản Lý Kho</span></a>
+            <li class=" nav-item"><a href="/admin/san-pham/index"><i class="feather icon-folder"></i><span
+                        class="menu-title" data-i18n="">Quản Lý Sản Phẩm</span></a>
             </li>
-            <li class=" nav-item"><a href="/don-hang/index" ><i class="feather icon-folder"></i><span class="menu-title" data-i18n="">Quản Lý Đơn Hàng</span></a>
+            <li class=" nav-item"><a href="/admin/nhap-kho/index"><i class="feather icon-folder"></i><span
+                        class="menu-title" data-i18n="">Quản Lý Kho</span></a>
             </li>
-            <li class=" nav-item"><a href="/admin/quan-li-tai-khoan/index" ><i class="feather icon-folder"></i><span class="menu-title" data-i18n="">Quản Lý Tài Khoản</span></a>
+            <li class=" nav-item"><a href="/don-hang/index"><i class="feather icon-folder"></i><span class="menu-title"
+                        data-i18n="">Quản Lý Đơn Hàng</span></a>
             </li>
-            <li class=" nav-item"><a href="/admin/cau-hinh" ><i class="feather icon-folder"></i><span class="menu-title" data-i18n="">Quản Lý Slide</span></a>
+            <li class=" nav-item"><a href="/admin/quan-li-tai-khoan/index"><i class="feather icon-folder"></i><span
+                        class="menu-title" data-i18n="">Quản Lý Tài Khoản</span></a>
+            </li>
+            <li class=" nav-item"><a href="/admin/cau-hinh"><i class="feather icon-folder"></i><span class="menu-title"
+                        data-i18n="">Quản Lý Slide</span></a>
             </li>
         </ul>
     </div>

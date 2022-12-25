@@ -1,22 +1,22 @@
 <div class="arrivals-product pb-85 pb-sm-45">
     <div class="container">
         <div class="main-product-tab-area">
-            <div class="tab-menu mb-25"
-                style="background-color: #FD841F !important; border-radius: 5px; padding: 5px 10px">
-                <div>
-                    <h2 style="color: #fff; font-size: 21px; font-weight: 900">Sản Phẩm mới</h2>
-                </div>
-                <!-- Nav tabs -->
-                <ul class="nav tabs-area" role="tablist">
-                    @foreach ($menuCha as $key => $value)
-                        <li class="nav-item">
-                            <a class="nav-link {{ $key == 0 ? 'active' : '' }}" data-toggle="tab"
-                                href="#{{ $value->id }}">{{ $value->ten_danh_muc }}</a>
-                        </li>
-                    @endforeach
-                </ul>
-
+            {{-- <div class="tab-menu mb-25"
+                style="background-color: #FD841F !important; border-radius: 5px; padding: 5px 10px"> --}}
+            <div class="title-new">
+                <h1><i class="fa-solid fa-star"></i> Sản Phẩm mới</h1>
             </div>
+            <!-- Nav tabs -->
+            <ul class="nav tabs-area newproduct-list" role="tablist">
+                @foreach ($menuCha as $key => $value)
+                    <li class="nav-item">
+                        <a class="nav-link {{ $key == 0 ? 'active' : '' }}" data-toggle="tab"
+                            href="#{{ $value->id }}">{{ $value->ten_danh_muc }}</a>
+                    </li>
+                @endforeach
+            </ul>
+
+            {{-- </div> --}}
 
             <!-- Tab Contetn Start -->
             <div class="tab-content">

@@ -91,6 +91,13 @@ Route::group(['prefix' => '/admin'], function () {
         Route::get('/danh-sach-tai-khoan', [\App\Http\Controllers\QuanLiTaiKhoanController::class, 'ListTaiKhoan']);
         Route::get('/xoa-tai-khoan/{id}', [\App\Http\Controllers\QuanLiTaiKhoanController::class, 'XoaTaiKhoan']);
     });
+
+    // thống kê
+    Route::group(['prefix' => '/quan-li-thong-ke'], function () {
+        Route::get('/index', [\App\Http\Controllers\QuanLiThongKeController::class, 'index']);
+        Route::post('/filter', [\App\Http\Controllers\QuanLiThongKeController::class, 'filter']);
+        Route::post('/filter-dashboard', [\App\Http\Controllers\QuanLiThongKeController::class, 'filterDashboard']);
+    });
 });
 //user
 Route::group(['prefix' => '/agent'], function () {
@@ -119,6 +126,8 @@ Route::group(['prefix' => '/don-hang'], function () {
     Route::get('/chi-tiet-don-hang/{id}', [\App\Http\Controllers\QuanLiDonHangController::class, 'chiTietDonHang']);
 });
 //Forgot password
+
+
 
 //test
 Route::get('/test', [\App\Http\Controllers\TestController::class, 'test']);

@@ -129,15 +129,15 @@
                     </ul>
                     <!-- Product Thumbnail Tab Content Start -->
                     <div class="tab-content thumb-content border-default">
-                        <div id="dtail" class="tab-pane fade show active">
+                        <div id="dtail" class="tab-pane fade show active" style="overflow: auto; height: 500px;">
                             <p class="motachitiet">
-                                {{-- {{ $sanPham->mo_ta_chi_tiet }} --}}
+                                {!! $sanPham->mo_ta_chi_tiet !!}
                             </p>
 
                         </div>
-                        {{-- <div id="review" class="tab-pane fade">
+                        <div id="review" class="tab-pane fade">
                             <!-- Reviews Start -->
-                            <ul class="list-inline rating" title="Average Rating">
+                            {{-- <ul class="list-inline rating" title="Average Rating">
                                 @for ($count = 1; $count <= 5; $count++)
                                     @php
                                         if ($count <= $rating) {
@@ -153,8 +153,8 @@
                                             {{ $color }}">
                                         &#9733;</li>
                                 @endfor
-                            </ul>
-                        </div> --}}
+                            </ul> --}}
+                        </div>
                         <div id="review" class="tab-pane fade">
                             <!-- Reviews Start -->
                             <!-- Reviews Start -->
@@ -252,8 +252,8 @@
     <div class="hot-deal-products off-white-bg pt-100 pb-90 pt-sm-60 pb-sm-50">
         <div class="container">
             <!-- Product Title Start -->
-            <div class="post-title pb-30">
-                <h2 style="background-color: #FD841F !important">Sản Phẩm Tương Tự</h2>
+            <div class="title-new">
+                <h1><i class="fa-solid fa-paper-plane"></i> Sản Phẩm Tương Tự</h1>
             </div>
             <!-- Product Title End -->
             <!-- Hot Deal Product Activation Start -->
@@ -343,9 +343,6 @@
     </div>
 @endsection
 @section('js')
-    <script>
-        document.querySelector('.motachitiet').innerHTML = "<?php echo $sanPham->mo_ta_chi_tiet; ?>";
-    </script>
     <script>
         $(document).ready(function() {
             $.ajaxSetup({
