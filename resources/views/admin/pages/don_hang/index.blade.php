@@ -78,7 +78,7 @@
                                 <th class="text-nowrap text-center">Khuyến mãi</th>
                                 <th class="text-nowrap text-center">Thực trả</th>
                                 <th class="text-nowrap text-center">Loại thanh toán</th>
-                                <th class="text-nowrap text-center">Trạng Thái</th>
+                                {{-- <th class="text-nowrap text-center">Trạng Thái</th> --}}
                                 <th class="text-nowrap text-center">Action</th>
                             </tr>
                         </thead>
@@ -105,18 +105,24 @@
                     type: 'get',
                     success: function(res) {
                         var html = '';
+                        var phuongThucThanhToan = " ";
                         $.each(res.dulieudonhang, function(key, value) {
+                            if (value.loai_thanh_toan == 1) {
+                                phuongThucThanhToan = 'Thanh toán khi nhận hàng'
+                            } else {
+                                phuongThucThanhToan = 'chịu :)))'
+                            }
                             html += '<tr>';
                             html += '<th scope="row">' + (key + 1) + '</th>';
                             html += '<td>' + value.ma_don_hang + '</td>';
                             html += '<td>' + value.tong_tien + '</td>';
                             html += '<td>' + value.tien_giam_gia + '</td>';
                             html += '<td>' + value.thuc_tra + '</td>';
-                            html += '<td>' + value.loai_thanh_toan + '</td>';
-                            html += '<td>'
-                            html +=
-                                '<button type="button" class="btn btn-warning">Đang giao</button>'
-                            html += '</td>';
+                            html += '<td>' + phuongThucThanhToan + '</td>';
+                            // html += '<td>'
+                            // html +=
+                            //     '<button type="button" class="btn btn-warning">Đang giao</button>'
+                            // html += '</td>';
                             html += '<td>';
                             html += '<button class="btn btn-primary nutView mr-1" data-id="' +
                                 value.id +

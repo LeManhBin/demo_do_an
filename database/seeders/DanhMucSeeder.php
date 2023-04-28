@@ -18,8 +18,6 @@ class DanhMucSeeder extends Seeder
 
         DB::table('danh_muc_san_phams')->truncate();
 
-        DB::table('danh_muc_san_phams')->insert([
-
-        ]);
+        DB::table('danh_muc_san_phams')->insert([]);
     }
 }

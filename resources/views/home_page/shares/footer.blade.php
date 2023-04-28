@@ -109,11 +109,12 @@
             <div class="col-xs-5 col-md-3">
                 <h6>Categories</h6>
                 <ul class="footer-links">
-                    <li><a href="">Điện thoại</a></li>
-                    <li><a href="">Laptop</a></li>
-                    <li><a href="">Máy tính bảng</a></li>
-                    <li><a href="">Smart Watch</a></li>
-                    <li><a href="">Phụ kiện</a></li>
+                    @foreach ($menuCha as $value_cha)
+                        <li>
+                            <a
+                                href="/danh-muc/{{ $value_cha->slug_danh_muc }}-post{{ $value_cha->id }}">{{ $value_cha->ten_danh_muc }}</a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </div>

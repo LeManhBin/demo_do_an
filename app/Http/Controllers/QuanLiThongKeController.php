@@ -21,13 +21,15 @@ class QuanLiThongKeController extends Controller
         $get = quan_li_thong_ke::whereBetween('order_date', [$from_date, $to_date])->orderBy('order_date', 'ASC')->get();
 
         $chart_data = [];
+
         foreach ($get as $key => $val) {
             array_push($chart_data, array(
                 'period' => $val->order_date,
                 'order' => $val->total_order,
                 'sales' => $val->sales,
-                'profit' => $val->profit,
+                // 'profit' => $val->profit,
                 'quantity' => $val->quantity,
+                'total' => $val->total
             ));
             // $chart_data[] = array(
             //     'period' => $val->order_date,
@@ -71,7 +73,7 @@ class QuanLiThongKeController extends Controller
                 'period' => $val->order_date,
                 'order' => $val->total_order,
                 'sales' => $val->sales,
-                'profit' => $val->profit,
+                // 'profit' => $val->profit,
                 'quantity' => $val->quantity,
             ));
             // $chart_data[] = array(

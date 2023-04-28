@@ -1,16 +1,13 @@
 <div class="hot-deal-products off-white-bg pb-90 pb-sm-50">
     <div class="banner-moi">
         <div class="banner-moi-img">
-            <img src="https://cdn-dgcei.nitrocdn.com/QaFavQVnaqgHtiSsAelwGDKVguOuACXM/assets/static/optimized/rev-af23092/wp-content/uploads/2022/11/danh-muc1-T11-01.png"
-                alt="">
+            <img src="/images/banner-1.png" alt="">
         </div>
         <div class="banner-moi-img">
-            <img src="https://cdn-dgcei.nitrocdn.com/QaFavQVnaqgHtiSsAelwGDKVguOuACXM/assets/static/optimized/rev-af23092/wp-content/uploads/2022/06/AirPods-MB.jpg"
-                alt="">
+            <img src="/images/banner-2.png" alt="">
         </div>
         <div class="banner-moi-img">
-            <img src="https://cdn-dgcei.nitrocdn.com/QaFavQVnaqgHtiSsAelwGDKVguOuACXM/assets/static/optimized/rev-af23092/wp-content/uploads/2022/06/Care-MB.jpg"
-                alt="">
+            <img src="/images/banner-1.png" alt="">
         </div>
     </div>
     <div class="container">

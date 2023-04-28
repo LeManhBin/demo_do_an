@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+
 class AdminSeeder extends Seeder
 {
     /**
@@ -19,6 +20,9 @@ class AdminSeeder extends Seeder
 
         DB::table('admin_accs')->insert([
             ['email' => 'lemanhbin@gmail.com', 'password' => bcrypt('12345678')],
+            ['email' => 'admin1@gmail.com', 'password' => bcrypt('12345678')],
+            ['email' => 'admin2@gmail.com', 'password' => bcrypt('12345678')],
+            ['email' => 'admin3@gmail.com', 'password' => bcrypt('12345678')],
         ]);
     }
 }

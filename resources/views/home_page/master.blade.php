@@ -23,16 +23,27 @@
     .banner-moi {
         display: flex;
         justify-content: center;
-        margin-bottom: 80px;
+        margin-bottom: 50px;
+        gap: 20px
     }
 
     .banner-moi-img {
         text-align: center;
-        margin: 0 20px;
+        /* margin: 0 20px; */
+        width: 350px;
+        height: 150px;
+        cursor: pointer;
+        overflow: hidden;
     }
 
     .banner-moi-img img {
-        width: 70%;
+        width: 350px;
+        height: 150px;
+        transition: .5s ease-in-out;
+    }
+
+    .banner-moi-img img:hover {
+        transform: scale(1.1)
     }
 
     .title-new {

@@ -53,7 +53,7 @@
     <div class="col-md-12">
         <div class="main-card mb-3 card">
             <div class="card-body">
-                <h5 class="card-title">Bảng Thống Kê 1 Năm</h5>
+                <h5 class="card-title"></h5>
                 <div style="overflow-x: auto;">
                     <table class="mb-0 table table-bordered" id="tableDanhMuc">
                         <thead>
@@ -67,7 +67,7 @@
                     </table>
                 </div>
 
-                <h3 class="card-title">Tổng tiền: <b></b> </h3>
+                <h3 class="card-title"><b></b> </h3>
             </div>
         </div>
     </div>
@@ -89,9 +89,9 @@
                 hideHover: 'auto',
                 parseTime: false,
                 xkey: 'period',
-                ykeys: ['order', 'sales', 'profit', 'quantity'],
+                ykeys: ['order', 'sales', 'quantity', 'total'],
                 behaveLikeLine: true,
-                labels: ['Đơn hàng', 'Doanh số', 'profit', 'quantity']
+                labels: ['Đơn hàng', 'Doanh số', 'Số lượng', 'Tổng thống kê']
             });
 
             // btn
@@ -109,7 +109,7 @@
                         _token: _token
                     },
                     success: function(data) {
-                        // console.log(data.data);
+                        console.log(chart);
                         chart.setData(data.data);
                     }
                 });

@@ -19,9 +19,7 @@ class SanPhamSeeder extends Seeder
         DB::table('san_phams')->truncate();
 
         DB::table('san_phams')->insert([
-            [
-
-            ],
+            [],
         ]);
     }
 }

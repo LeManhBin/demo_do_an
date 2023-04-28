@@ -52,7 +52,8 @@
                         <form action="/admin/san-pham/search" method="post">
                             @csrf
 
-                            <input type="text" name="search" placeholder="Nhập tên sản phẩm cần tìm...">
+                            <input type="text" name="search" placeholder="Nhập tên sản phẩm cần tìm..."
+                                autocomplete="off" style="color: #000">
                             <button type="submit" style="background-color: #FD841F"><i
                                     class="fa-solid fa-magnifying-glass"></i></button>
                         </form>
